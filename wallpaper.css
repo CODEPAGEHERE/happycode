@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#containx {
+    margin: 0;
+    padding: 0;
+}
+
+#happyday {
+    background-color: whitesmoke;
+    color: cornflowerblue;
+    width: 100vw;
+    height: 100vh;
+}
+
+#happynight {
+    background-color: black;
+    color: goldenrod;
+    width: 100vw;
+    height: 100vh;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+ul {
+    position: absolute;
+    top: 40%; /* Adjusted top percentage */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+}
+
+li {
+    list-style: none;
+    font-size: 10em;
+    letter-spacing: 5px;
+    transition: 1s;
+}
+
+li:hover {
+    filter: blur(70px);
+    opacity: 0;
+}
+
+li:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+li:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+li:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+li:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+li:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+/* typing style*/
+
+.typewriter-container {
+    position: absolute;
+    top: calc(40% + 2em); /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.typewriter-text {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: large;
+    display: inline-block; /* Ensure it respects inline elements like text */
+    border-right: 2px solid #000;
+    padding-right: 5px; /* Adjust as needed */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow text */
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}

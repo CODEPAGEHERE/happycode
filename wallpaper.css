@@ -11,15 +11,17 @@
 #happyday {
     background-color: whitesmoke;
     color: cornflowerblue;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
+    overflow:hidden;
 }
 
 #happynight {
     background-color: black;
     color: goldenrod;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
+    overflow:hidden;
 }
 
 a {
@@ -76,7 +78,7 @@ li:nth-child(5) {
 
 .typewriter-container {
     position: absolute;
-    top: calc(40% + 2em); /* Adjust as needed */
+    top: 50%;
     left: 50%;
     transform: translateX(-50%);
 }

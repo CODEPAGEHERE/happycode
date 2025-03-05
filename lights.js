@@ -1,23 +1,23 @@
-$(document).ready(function() {
-  // Initially hide both themes
-  $('#happyday').hide();
-  $('#happynight').hide();
+$(document).ready(function () {
+    const toggleSwitch = $("#themeToggle"); // jQuery selector
+    const body = $("body");
 
-  // Get the current hour
-  var currentHour = new Date().getHours();
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem("theme");
 
-  // Set the initial theme based on the current hour
-  if (currentHour >= 6 && currentHour < 18) {
-      // Daytime
-      $('#happyday').show();
-  } else {
-      // Nighttime
-      $('#happynight').show();
-  }
+    if (savedTheme === "night") {
+        body.addClass("night-mode");
+        toggleSwitch.prop("checked", true); // Ensure the switch is checked
+    }
 
-  // Function to toggle between day and night themes
-  $('.themetogg').click(function() {
-      $('#happyday').toggle();
-      $('#happynight').toggle();
-  });
+    // Theme Toggle Function
+    toggleSwitch.change(function () {
+        if (this.checked) {
+            body.addClass("night-mode");
+            localStorage.setItem("theme", "night");
+        } else {
+            body.removeClass("night-mode");
+            localStorage.setItem("theme", "day");
+        }
+    });
 });

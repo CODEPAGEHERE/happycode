@@ -3,51 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no">
-    <title>HELLO_HAPPYCODE&#128540;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Hey&#128540; Happycode</title>
 
-     <!--frame styling system-->
-     <!-- Bootstrap 4.6 and jQuery CDN -->
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <!-- Bootstrap 4.6 and jQuery CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
 
-
-    <!-- personal style system-->
+    <!-- Personal stylesheet -->
     <link rel="stylesheet" href="wallpaper.css">
 </head>
 <body>
 
+    <main class="container-fluid">
 
-    <main class = "container-fluid">
-
-        <div id ="happyday" class="col-md-6">
-
-
-            <div class="btn-group" id="sectn">
-                <button type="button" class="btn btn-primary"><a href="#">HOME</a></button>
-                <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><a href="#">SERVICE</a></button>
-               <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">MENTORSHIP</a>
-                <a class="dropdown-item" href="#">CONTRACT</a>
-                <a class="dropdown-item" href="#">COLLABORATION</a>
-               </div>
-
+        <!-- Navigation Pills -->
+        <ul class="nav nav-pills justify-content-center" id="navbar">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">HOME</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="serviceDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                    SERVICE
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">MENTORSHIP</a>
+                    <a class="dropdown-item" href="#">CONTRACT</a>
+                    <a class="dropdown-item" href="#">COLLABORATION</a>
                 </div>
-                <button type="button" class="btn btn-primary"><a href="#">PROJECTS</a></button>
-                <button type="button" class="btn btn-primary"><a href="#">ABOUT</a></button>
-                <button type="button" class="btn btn-primary"><a href="#">CONTACT</a></button>
-            </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">PROJECTS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">ABOUT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">CONTACT</a>
+            </li>
+        </ul>
 
-            <div>
-                <button class="themetogg">Goodnight</button>
-            </div>
+        <!-- Theme Toggle Button -->
+        <div>
+            <label class="switch">
+                <input id="themeToggle" type="checkbox">
+                <span class="slider">
+                    <div class="star star_1"></div>
+                    <div class="star star_2"></div>
+                    <div class="star star_3"></div>
+                    <svg viewBox="0 0 16 16" class="cloud_1 cloud" alt="Theme Toggle">
+                        <path
+                            transform="matrix(.77976 0 0 .78395-299.99-418.63)"
+                            fill="#fff"
+                            d="m391.84 540.91c-.421-.329-.949-.524-1.523-.524-1.351 0-2.451 1.084-2.485 2.435-1.395.526-2.388 1.88-2.388 3.466 0 1.874 1.385 3.423 3.182 3.667v.034h12.73v-.006c1.775-.104 3.182-1.584 3.182-3.395 0-1.747-1.309-3.186-2.994-3.379.007-.106.011-.214.011-.322 0-2.707-2.271-4.901-5.072-4.901-2.073 0-3.856 1.202-4.643 2.925"
+                        ></path>
+                    </svg>
+                </span>
+            </label>
+        </div>
 
- <div class="content-container">
-                <img src="your-image-day.jpg" alt="Day Image" class="img-fluid mb-3">
-                <ul class="d-flex justify-content-center">
+        <!-- Main Content -->
+        <div class="content-container">
+            <img src="your-image-day.jpg" alt="Day Image" class="img-fluid mb-3">
+
+            <div class="text-center">
+                <ul class="d-inline-flex justify-content-center list-unstyled">
                     <li>H</li>
                     <li>A</li>
                     <li>P</li>
@@ -58,64 +80,16 @@
                     <li>D</li>
                     <li>E</li>
                 </ul>
-                <div class="typewriter-container mt-3">
-                    <div class="typewriter-text"></div>
-                </div>
+            </div>
+
+            <div class="typewriter-container mt-3">
+                <div class="typewriter-text"></div>
             </div>
         </div>
 
-<!--happy day/night difference by(toggle function)-->
-
-        <div id="happynight" class="col-md-6">
-
-
-            <div class="btn-group" id="secat">
-                <button type="button" class="btn btn-warning"><a href="#">HOME</a></button>
-                <div class="btn-group">
-                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><a href="#">SERVICE</a></button>
-               <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">MENTORSHIP</a>
-                <a class="dropdown-item" href="#">CONTRACT</a>
-                <a class="dropdown-item" href="#">COLLABORATION</a>
-               </div>
-
-                </div>
-                <button type="button" class="btn btn-warning"><a href="#">PROJECTS</a></button>
-                <button type="button" class="btn btn-warning"><a href="#">ABOUT</a></button>
-                <button type="button" class="btn btn-warning"><a href="#">CONTACT</a></button>
-            </div>
-
-            <div>
-                <button class="themetogg">Good morning</button>
-            </div>
-
-
- <div class="content-container">
-                <img src="your-image-day.jpg" alt="Day Image" class="img-fluid mb-3">
-                <ul class="d-flex justify-content-center">
-                    <li>H</li>
-                    <li>A</li>
-                    <li>P</li>
-                    <li>P</li>
-                    <li>Y</li>
-                    <li>C</li>
-                    <li>(/)</li>
-                    <li>D</li>
-                    <li>E</li>
-                </ul>
-                <div class="typewriter-container mt-3">
-                    <div class="typewriter-text"></div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-    </div>
     </main>
-    <!-- scripts -->
+
+    <!-- Scripts -->
     <script src="lights.js"></script>
     <script src="type.js"></script>
 </body>

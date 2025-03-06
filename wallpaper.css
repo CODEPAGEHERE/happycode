@@ -11,11 +11,14 @@ body.night-mode {
     color: #F3C623;
 }
 
-/* Navigation Pills - Centered */
+/* Navigation Pills - Centered & Inline */
 #navbar {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap; /* Ensures pills stay inline but adapt on smaller screens */
+    gap: 10px; /* Controls spacing */
     margin-top: 20px;
+    padding: 0 10px; /* Ensures pills don't overflow */
 }
 
 /* Pills Styling */
@@ -219,20 +222,24 @@ img.img-fluid {
 
 /* Small Phones (max-width: 576px) */
 @media (max-width: 576px) {
+    #navbar {
+        gap: 5px; /* Reduce spacing for better fit */
+    }
     .nav-pills .nav-link {
         font-size: 0.7em;
         padding: 4px 12px;
         border-radius: 15px;
-        margin: 0 3px;
     }
 }
 
 /* Extra Small Phones (max-width: 400px) */
 @media (max-width: 400px) {
+    #navbar {
+        gap: 3px; /* Reduce further to ensure inline layout */
+    }
     .nav-pills .nav-link {
         font-size: 0.65em;
         padding: 3px 10px;
         border-radius: 12px;
-        margin: 0 2px;
     }
 }

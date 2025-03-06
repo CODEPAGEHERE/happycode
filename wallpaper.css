@@ -297,14 +297,7 @@ img.img-fluid {
 
 
 
-:root {
-    --cloud-border-day: black;  /* Black stroke in day */
-    --cloud-fill-day: white;    /* White fill in day */
-    --cloud-border-night: white; /* White stroke in night */
-    --cloud-fill-night: #555;   /* Ash/Gray fill in night */
-}
 
-/* Default (Day Mode) */
 .big-floating-cloud {
     position: fixed;
     top: 50%;
@@ -312,15 +305,34 @@ img.img-fluid {
     transform: translate(-50%, -50%);
     width: 700px;
     height: 500px;
-    color: var(--cloud-border-day); /* Border color */
-    background-color: var(--cloud-fill-day); /* Fill color */
     z-index: 9999;
     pointer-events: none;
-    border-radius: 50%;
 }
 
-/* Night Mode */
-.dark-mode .big-floating-cloud {
-    color: var(--cloud-border-night); /* Border color */
-    background-color: var(--cloud-fill-night); /* Fill color */
+/* Default: Show Day Cloud, Hide Night Cloud */
+#day-cloud {
+    display: block;
+}
+#night-cloud {
+    display: none;
+}
+
+/* When night mode is activated */
+.night-mode #day-cloud {
+    display: none;
+}
+.night-mode #night-cloud {
+    display: block;
+}
+
+/* Night mode background */
+.night-mode {
+    background-color: #121212;
+    color: white;
+}
+
+/* Add shadow to the clouds */
+#day-cloud,
+#night-cloud {
+    filter: drop-shadow(10px 10px 10px rgba(1, 0, 0, 0.5));
 }

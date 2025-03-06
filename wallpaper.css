@@ -193,3 +193,46 @@ img.img-fluid {
     from, to { border-color: transparent; }
     50% { border-color: black; }
 }
+
+
+
+
+/* Responsive Styles for Pills */
+
+/* Tablets and smaller laptops (max-width: 992px) */
+@media (max-width: 992px) {
+    .nav-pills .nav-link {
+        font-size: 0.8em;
+        padding: 6px 16px;
+        border-radius: 20px;
+    }
+}
+
+/* Large Phones (max-width: 768px) */
+@media (max-width: 768px) {
+    .nav-pills .nav-link {
+        font-size: 0.75em;
+        padding: 5px 14px;
+        border-radius: 18px;
+    }
+}
+
+/* Small Phones (max-width: 576px) */
+@media (max-width: 576px) {
+    .nav-pills .nav-link {
+        font-size: 0.7em;
+        padding: 4px 12px;
+        border-radius: 15px;
+        margin: 0 3px;
+    }
+}
+
+/* Extra Small Phones (max-width: 400px) */
+@media (max-width: 400px) {
+    .nav-pills .nav-link {
+        font-size: 0.65em;
+        padding: 3px 10px;
+        border-radius: 12px;
+        margin: 0 2px;
+    }
+}

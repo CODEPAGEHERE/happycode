@@ -55,7 +55,7 @@ body.night-mode::before {
     font-weight: bold;
     font-size: 0.9em; /* Smaller font */
     padding: 8px 20px; /* Add width */
-    color: #0D92F4;
+    color: #0D92F4 !important;
     background: linear-gradient(to bottom, rgba(13, 146, 244, 0.1), rgba(13, 146, 244, 0.1));
     border-radius: 25px; /* More rounded */
     margin: 0 20px;
@@ -66,19 +66,19 @@ body.night-mode::before {
 /* Active Link Styling */
 .nav-pills .nav-link.active {
     background-color: #0088CC;
-    color: white;
+    color: white !important;
     opacity: 1;
 }
 
 /* Dark Mode - Change Pills Color */
 body.night-mode .nav-pills .nav-link {
-    color: #F3C623;
+    color: #F3C623 !important;
     background: linear-gradient(to bottom, rgba(248, 248, 248, 0.1), rgba(243, 243, 243, 0.2));
 }
 
 body.night-mode .nav-pills .nav-link.active {
     background-color: #F3C623;
-    color: black;
+    color: black !important;
 }
 
 /* Theme Switch */
@@ -87,7 +87,7 @@ body.night-mode .nav-pills .nav-link.active {
   position: relative;
   display: inline-block;
   width: 4em;
-  height: 2.2em;
+  height: 1.8em;
   border-radius: 30px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -173,11 +173,6 @@ body.night-mode .nav-pills .nav-link.active {
     align-items: center;
 }
 
-/* Image Styling */
-img.img-fluid {
-    max-width: 100%;
-    height: auto;
-}
 
 /* Animated Text */
 .animated-text {
@@ -193,7 +188,7 @@ img.img-fluid {
     font-size: 2.5em; /* Adjust as needed */
     letter-spacing: 1px; /* Adjust as needed */
     transition: 1s;
-    margin: 0 5px; /* Adjust spacing between letters */
+    margin: 0 9px; /* Adjust spacing between letters */
 }
 
 /* Hover effect for animated text */
@@ -298,41 +293,79 @@ img.img-fluid {
 
 
 
-.big-floating-cloud {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 700px;
-    height: 500px;
-    z-index: 9999;
-    pointer-events: none;
+/* 🌤️ Floating Cloud - Adjust size & centering */
+.cloud-container {
+    position: relative;
+    width: 500px; /* Increased width */
+    height: 300px; /* Increased height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }
 
-/* Default: Show Day Cloud, Hide Night Cloud */
+/* Make cloud bigger */
+.big-floating-cloud {
+    width: 80%; /* Bigger cloud */
+    max-width: 450px;
+    position: absolute;
+    top: 10px; /* Adjusted for proper centering */
+    left: 50%;
+    transform: translateX(-50%);
+    filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.2));
+}
+
+/* Default: Show day cloud, hide night cloud */
 #day-cloud {
     display: block;
+    width: 100%;
 }
+
 #night-cloud {
+    display: none;
+    width: 100%;
+}
+
+/* 🌙 Show night cloud in dark mode */
+body.night-mode #day-cloud {
     display: none;
 }
 
-/* When night mode is activated */
-.night-mode #day-cloud {
-    display: none;
-}
-.night-mode #night-cloud {
+body.night-mode #night-cloud {
     display: block;
 }
 
-/* Night mode background */
-.night-mode {
-    background-color: #121212;
-    color: white;
+/* Ensure text inside cloud is properly centered */
+.animated-text, .typewriter-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
 }
 
-/* Add shadow to the clouds */
-#day-cloud,
-#night-cloud {
-    filter: drop-shadow(10px 10px 10px rgba(1, 0, 0, 0.5));
+/* 🟡 Prevent button color from changing in night mode */
+.nav-pills .nav-link {
+    background: linear-gradient(to bottom, rgba(13, 146, 244, 0.1), rgba(13, 146, 244, 0.1));
+    color: #0D92F4 !important;
+}
+
+body.night-mode .nav-pills .nav-link {
+    background: linear-gradient(to bottom, rgba(248, 248, 248, 0.1), rgba(243, 243, 243, 0.2));
+    color: #F3C623 !important;
+}
+
+/* 🌓 Fix text colors in night mode */
+body.night-mode .animated-text {
+    color: gold !important;
+}
+
+body.night-mode .typewriter-container {
+    color: white !important;
+    border-right: 2px solid white;
+}
+
+/* 🖼️ Fix logo opacity */
+.night-mode .logo {
+    opacity: 0.8;
 }

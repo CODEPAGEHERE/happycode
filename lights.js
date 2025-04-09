@@ -1,35 +1,45 @@
 $(document).ready(function () {
-    const toggleSwitch = $("#themeToggle"); // jQuery selector
+    const toggleSwitch = $("#themeToggle");
     const body = $("body");
+    const textElements = $(".nav-link, .typewriter-container, .animated-text, body");
+    const dayCloud = $("#day-cloud");
+    const nightCloud = $("#night-cloud");
 
-    // Function to determine if it's day or night based on time
+    // Function to get the current theme based on time
     function getCurrentTheme() {
         const hour = new Date().getHours();
-        return (hour >= 6 && hour < 18) ? "day" : "night"; // Day: 6 AM - 6 PM, Night: 6 PM - 6 AM
+        return (hour >= 6 && hour < 18) ? "day" : "night";
     }
 
-    // Check for saved theme preference
-    let savedTheme = localStorage.getItem("theme");
-
-    if (!savedTheme) {
-        savedTheme = getCurrentTheme(); // If no preference, use time-based theme
-        localStorage.setItem("theme", savedTheme);
-    }
-
-    // Apply the saved or time-based theme
-    if (savedTheme === "night") {
-        body.addClass("night-mode");
-        toggleSwitch.prop("checked", true); // Ensure the switch is checked
-    }
-
-    // Theme Toggle Function (Manual Override)
-    toggleSwitch.change(function () {
-        if (this.checked) {
+    // Function to apply theme
+    function updateTheme(theme) {
+        if (theme === "night") {
             body.addClass("night-mode");
-            localStorage.setItem("theme", "night");
+            textElements.css("color", "gold");
+            dayCloud.hide();
+            nightCloud.show();
+            toggleSwitch.prop("checked", true);
+            console.log("🌙 Night mode activated.");
         } else {
             body.removeClass("night-mode");
-            localStorage.setItem("theme", "day");
+            textElements.css("color", "cornflowerblue");
+            dayCloud.show();
+            nightCloud.hide();
+            toggleSwitch.prop("checked", false);
+            console.log("☀️ Day mode activated.");
         }
+    }
+
+    // Apply saved theme or time-based theme
+    let savedTheme = localStorage.getItem("theme") || getCurrentTheme();
+    updateTheme(savedTheme);
+
+    // Toggle theme on switch click
+    toggleSwitch.change(function () {
+        let newTheme = this.checked ? "night" : "day";
+        localStorage.setItem("theme", newTheme);
+        updateTheme(newTheme);
     });
+
+    console.log("✅ Theme Toggle Fully Functional!");
 });

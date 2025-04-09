@@ -9,6 +9,9 @@ a product of : <br>
       Server :// <br>
       Others :// <br>
 Domain Name : // <br>
-live here : // on github <br>
-last update : 5/3/2025 <br>
+live here : .vercel.app <br>
+last update : 9/4/2025 <br>
 last commit : CodePage.Me <br>
+
+
+=================================================================================================

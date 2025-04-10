@@ -369,3 +369,190 @@ body.night-mode .typewriter-container {
 .night-mode .logo {
     opacity: 0.8;
 }
+
+
+
+
+
+
+/* CONTACT PAGE STYLE */
+#clouds {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.floating-cloud {
+    position: absolute;
+    height: auto;
+    opacity: 0.7;
+    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2));
+    animation-timing-function: linear;
+}
+
+.floating-cloud svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Cloud 1 */
+.cloud1 {
+    top: 5%;
+    left: -250px;
+    width: 250px;
+    opacity: 0.6;
+}
+
+/* Cloud 2 */
+.cloud2 {
+    top: 50%;
+    left: -100px;
+    width: 200px;
+    opacity: 0.8;
+}
+
+/* Cloud 3 */
+.cloud3 {
+    top: 60%;
+    left: -300px;
+    width: 170px;
+    opacity: 0.5;
+}
+
+/* Cloud 4 */
+.cloud4 {
+    top: 60%;
+    left: -100px;
+    width: 200px;
+    opacity: 0.9;
+}
+
+/* Cloud 5 (Fixed Bottom-Right with Up/Down motion) */
+.cloud5 {
+    position: fixed;
+    bottom: 0;        /* Ensure it sticks to the bottom */
+    right: 0;         /* Ensure it sticks to the right */
+    width: 300px;     /* Increased size */
+    opacity: 0.9;
+    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2));
+    transform-origin: 50% 50%;
+    z-index: 1;
+	margin-bottom:-70px;
+	margin-right:-50px;
+}
+
+
+/* Glowing effect for dark mode */
+body.dark-mode .floating-cloud {
+    filter: drop-shadow(4px 4px 15px rgba(255, 255, 255, 0.5));
+    animation: pulseGlow 2s alternate infinite;
+}
+
+@keyframes pulseGlow {
+    from {
+        filter: drop-shadow(4px 4px 15px rgba(255, 255, 255, 0.5));
+    }
+    to {
+        filter: drop-shadow(4px 4px 25px rgba(255, 255, 255, 0.8));
+    }
+}
+
+
+        /* Star Styles */
+        #stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -2;
+            opacity: 0;
+        }
+
+        #stars.visible {
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+        }
+		
+		
+		
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-details, .contact-form {
+    width: 45%;
+    background: rgba(255, 255, 255, 0.1); /* Transparent background for glass effect */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border-radius: 15px;
+    padding: 20px;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-details h2, .contact-form h2 {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.contact-details p, .contact-form label, .contact-form input, .contact-form textarea {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #6200ea; /* Primary theme color */
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background: #3700b3;
+}
+
+/* Dark mode styles */
+body.dark-mode .contact-details,
+body.dark-mode .contact-form {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    color: #fff;
+}
+
+body.dark-mode .contact-form button {
+    background: #bb86fc;
+}
+
+body.dark-mode .contact-form button:hover {
+    background: #3700b3;
+}

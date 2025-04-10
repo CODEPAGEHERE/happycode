@@ -43,3 +43,32 @@ $(document).ready(function () {
 
     console.log("✅ Theme Toggle Fully Functional!");
 });
+
+
+
+
+
+
+
+//transfer of theme through pages 
+
+// Day/Night Theme Syncing (already added in your code)
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+} else {
+    document.body.classList.remove('dark-mode');
+}
+
+// Toggle Theme when clicked (For example, with a button or a switch)
+const themeToggleButton = document.querySelector('#theme-toggle');
+themeToggleButton.addEventListener('click', () => {
+    const isDark = document.body.classList.contains('dark-mode');
+    if (isDark) {
+        document.body.classList.remove('dark-mode');
+        localStorage.setItem('theme', 'light');
+    } else {
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark');
+    }
+});

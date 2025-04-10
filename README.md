@@ -3,7 +3,7 @@
 Code.Page.12=> v . 1 . 1 <br>
 HappyCode Official Website <br>
 a product of : <br>
-      Frontend : Html / Css + (Bootstrap-4) / Javascript + (Jquery) / GSAP / json / Localstorage / <br>
+      Frontend : Html / Css + (Bootstrap-4) / Bootstrap icons / Javascript + (Jquery) / GSAP / json / Localstorage / <br>
       Backend :// <br>
       Database :// <br>
       Server :// <br>

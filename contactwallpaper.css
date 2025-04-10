@@ -1,0 +1,272 @@
+/* CONTACT PAGE STYLE */
+#clouds {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.floating-cloud {
+    position: absolute;
+    height: auto;
+    opacity: 0.7;
+    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2));
+    animation-timing-function: linear;
+}
+
+.floating-cloud svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Cloud 1 */
+.cloud1 {
+    top: 5%;
+    left: -250px;
+    width: 250px;
+    opacity: 0.6;
+}
+
+/* Cloud 2 */
+.cloud2 {
+    top: 50%;
+    left: -100px;
+    width: 200px;
+    opacity: 0.8;
+}
+
+/* Cloud 3 */
+.cloud3 {
+    top: 60%;
+    left: -300px;
+    width: 170px;
+    opacity: 0.5;
+}
+
+/* Cloud 4 */
+.cloud4 {
+    top: 60%;
+    left: -100px;
+    width: 200px;
+    opacity: 0.9;
+}
+
+/* Cloud 5 (Fixed Bottom-Right with Up/Down motion) */
+.cloud5 {
+    position: fixed;
+    bottom: 0;        /* Ensure it sticks to the bottom */
+    right: 0;         /* Ensure it sticks to the right */
+    width: 300px;     /* Increased size */
+    opacity: 0.9;
+    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2));
+    transform-origin: 50% 50%;
+    z-index: 1;
+	margin-bottom:-70px;
+	margin-right:-50px;
+}
+
+
+/* Glowing effect for dark mode */
+body.dark-mode .floating-cloud {
+    filter: drop-shadow(4px 4px 15px rgba(255, 255, 255, 0.5));
+    animation: pulseGlow 2s alternate infinite;
+}
+
+@keyframes pulseGlow {
+    from {
+        filter: drop-shadow(4px 4px 15px rgba(255, 255, 255, 0.5));
+    }
+    to {
+        filter: drop-shadow(4px 4px 25px rgba(255, 255, 255, 0.8));
+    }
+}
+
+/* Star Styles */
+#stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -2;
+    opacity: 0;
+}
+
+#stars.visible {
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+}
+
+
+
+
+/* Theme Color Variables */
+:root {
+  --theme-color: #0088cc;   /* Default: Deep Blue (day) */
+  --button-background: #0088cc; /* Blue background (day) */
+  --button-text-color: #ffffff; /* White text (day) */
+  --input-background: rgba(255, 255, 255, 0.3); /* Light background for inputs (day) */
+  --input-text-color: #0088cc; /* Blue text (day) */
+  --text-color: #0088cc; /* Default text color (white for day) */
+}
+
+body.night-mode { /* Sunny Yellow (night) */
+  --theme-color: #f3c623;   /* Sunny Yellow (night) */
+  --button-background: #f3c623; /* Gold background (night) */
+  --button-text-color: #000000; /* Black text (night) */
+  --input-background: rgba(255, 255, 255, 0.3); /* Light background for inputs (night) */
+  --input-text-color: #f3c623; /* Gold text (night) */
+  --text-color: #f3c623; /* Text color (night) */
+}
+
+/* CONTACT CONTAINER */
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 2rem;
+  gap: 2rem;
+  z-index: 1;
+}
+
+/* Glass containers */
+.contact-details,
+.contact-form {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 2rem;
+  color: var(--text-color); /* Use theme color for text */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Ensures both containers have the same height */
+}
+
+/* Contact Details Container */
+.contact-details {
+  flex: 4; /* 4 columns out of 12 */
+  height: 100%; /* Match form container height */
+  margin-right: 20px; /* Adds spacing between form and contact details */
+}
+
+/* Form container */
+.contact-form {
+  flex: 8; /* 8 columns out of 12 */
+  height: 100%; /* Make sure form container is tall enough */
+}
+
+/* Social Media Icons at the bottom of the contact details */
+.contact-details .social-media {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.contact-details .social-media i {
+  font-size: 2rem; /* Increase icon size */
+  color: var(--theme-color);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.contact-details .social-media i:hover {
+  color: var(--text-color);
+}
+
+/* Headings */
+.contact-details h2,
+.contact-form h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--text-color); /* Use theme color for headings */
+}
+
+/* Texts & Labels */
+.contact-details p,
+.contact-form label {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-color); /* Use theme color for labels */
+}
+
+/* Input Group */
+.contact-form .input-group {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 1rem;
+}
+
+.contact-form .input-group i {
+  margin-right: 10px;
+  color: var(--theme-color);
+  font-size: 1.1rem;
+}
+
+/* Input & Textarea */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background: var(--input-background);
+  color: var(--input-text-color); /* Use theme color for input text */
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Placeholder */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* Placeholder in night mode */
+body.night-mode .contact-form input::placeholder,
+body.night-mode .contact-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Focus Effects */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 12px var(--theme-color);
+}
+
+/* Button */
+.contact-form button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: var(--button-background);
+  color: var(--button-text-color);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* Button Hover */
+.contact-form button:hover {
+  filter: brightness(90%);
+}

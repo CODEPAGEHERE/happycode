@@ -11,9 +11,12 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
 
     <!-- Personal Stylesheet -->
     <link rel="stylesheet" href="wallpaper.css">
+	<link rel="stylesheet" href= "contactwallpaper.css">
 </head>
 <body>
     <main class="container-fluid">
@@ -45,32 +48,58 @@
             </ul>
         </div>
 
-      <div class="contact-container">
-    <!-- Contact Details Div -->
-    <div class="contact-details">
-        <h2>Contact Details</h2>
-        <p>Phone: +234 123 456 789</p>
-        <p>Email: contact@wishly.com</p>
-        <p>Address: 123 Birthday Lane, Happy City</p>
+    <div class="container my-5" id="contact-section">
+  <div class="row justify-content-center">
+    <!-- Contact Details Glass -->
+    <div class="col-md-4 mb-4">
+      <div class="glass contact-details text-center p-4">
+        <h4 class="mb-3">Contact Info</h4>
+        <p><i class="bi bi-geo-alt-fill"></i> Lagos, Nigeria</p> 
+		<hr>
+        <p><i class="bi bi-telephone-fill"></i> +234 801 234 5678</p>
+        <hr>
+		<p><i class="bi bi-envelope-fill"></i> hello@happycode.com</p>
+        <hr>
+		<p><i class="bi bi-globe"></i> www.happycode.com</p>
+		
+		<hr>
+			<!-- Social Media Icons -->
+	  <div class="social-media">
+		<a href="https://facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
+		<a href="https://twitter.com" target="_blank"><i class="bi bi-twitter"></i></a>
+		<a href="https://instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
+		<a href="https://linkedin.com" target="_blank"><i class="bi bi-linkedin"></i></a>
+	  </div>
+      </div>
     </div>
 
-    <!-- Form Div -->
-    <div class="contact-form">
-        <h2>Get in Touch</h2>
-        <form>
-            <label for="name">Name</label>
-            <input type="text" id="name" placeholder="Your Name">
-            
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Your Email">
-            
-            <label for="message">Message</label>
-            <textarea id="message" placeholder="Your Message"></textarea>
-            
-            <button type="submit">Send Message</button>
-        </form>
+    <!-- Contact Form Glass -->
+    <div class="col-md-7">
+      <div class="glass contact-form p-4">
+        <h4 class="mb-4 text-center">Get In Touch</h4>
+            <form action="https://formspree.io/f/mqapwara" method="POST">
+        <div class="form-group">
+            <label for="name"><i class="bi bi-person-fill"></i> Full Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Your Full Name">
+        </div>
+        <div class="form-group">
+            <label for="email"><i class="bi bi-envelope-fill"></i> Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
+        </div>
+        <div class="form-group">
+            <label for="message"><i class="bi bi-chat-dots-fill"></i> Message</label>
+            <textarea class="form-control" id="message" name="message" rows="4" placeholder="What Message do you have for us  ?"></textarea>
+        </div>
+        <button type="submit" class="btn btn-theme btn-block">
+            <i class="bi bi-send-fill"></i> Send Message
+        </button>
+    </form>
+      </div>
     </div>
+  </div>
 </div>
+
+
 
 
 

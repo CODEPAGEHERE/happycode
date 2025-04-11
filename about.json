@@ -6,9 +6,9 @@
       "header": "More Than Just a Tech Company",
       "body": "At Happycode Technologies, we're more than just a software company; we're a group of people passionate about making technology work for you. We build tools that solve problems, plain and simple. We believe that technology should make your work easier, your life better, and your business more successful.",
       "sub_header": "Driven by Values",
-      "sub_body": "Since our start in 2024, we've focused on creating software that's powerful and joyful to use. Our values — Simplicity, Genuine care, and a Commitment to quality — guide everything we do. We aim to empower people and businesses to thrive through innovation and support.",
+      "sub_body": "Since our start in 2024, we've focused on creating software products that's powerful and joyful to use. Our values — Simplicity, Genuine care for our customers needs , and a Commitment to quality — guide everything we do. we focus on providing exceptional support and building reliable and robust systems. Ultimately, we create software that helps you achieve your goals and reach your full potential.",
       "image": "images/about/about-us.png",
-      "name": "The Happycode Team"
+      "name": "stay happy and productive."
     }
   },
   "what_we_do": {
@@ -90,5 +90,5 @@
       "name": ""
     }
   },
-  "fallback_image": "images/logo.png"
+  "fallback_image": "img/default.png"
 }

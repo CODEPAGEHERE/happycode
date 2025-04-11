@@ -2,21 +2,8 @@
   "who_we_are": {
     "title": "Who We Are",
     "icon": "bi-people-fill",
-	"content": "
-			At Happycode Technologies,
-			we're more than just a software company; we're a group of people passionate about making technology work for you. 
-			We build tools that solve problems, plain and simple. We believe that technology should make your work easier, your life better,
-			and your business more successful.Since our start in 2024,
-			we've been focused on creating software that's both powerful and a joy to use. 
-			We're driven by the idea that great software empowers people and businesses to grow.
-			We're always looking ahead, striving to be at the forefront of innovative software solutions.
-			We see ourselves as partners, helping our clients navigate the ever-changing tech landscape.
-			Our core values are 1. simplicity, 2.genuine care for our users,
-			and 3.a commitment to doing things right. We put these values into practice by focusing on 
-			providing exceptional support and building reliable and robust systems.
-			Ultimately, we want to create software that helps you achieve your goals and reach your full potential. 
-			We're here to help you stay happy and productive."
-				},
+	"content": "At Happycode Technologies,we're more than just a software company; we're a group of people passionate about making technology work for you. We build tools that solve problems, plain and simple. We believe that technology should make your work easier, your life better,and your business more successful.Since our start in 2024,we've been focused on creating software that's both powerful and a joy to use. We're driven by the idea that great software empowers people and businesses to grow. We're always looking ahead, striving to be at the forefront of innovative software solutions. We see ourselves as partners, helping our clients navigate the ever-changing tech landscape. Our core values are 1. simplicity, 2.genuine care for our users and 3.a commitment to doing things right. We put these values into practice by focusing on providing exceptional support and building reliable and robust systems.Ultimately, we want to create software that helps you achieve your goals and reach your full potential. We're here to help you stay happy and productive."
+  },
   "what_we_do": {
     "title": "What We Do",
     "icon": "bi-code-slash",

@@ -1,22 +1,22 @@
 {
-  "whoWeAre": {
+  "who_we_are": {
     "title": "Who We Are",
-    "icon": "bi-whatsapp",
-    "content": "We are a creative and passionate team dedicated to making coding fun, accessible, and impactful for everyone."
+    "icon": "bi-people-fill",
+    "content": "We're a vibrant community of young, passionate developers aiming to build cool stuff and learn together."
   },
-  "whatWeDo": {
+  "what_we_do": {
     "title": "What We Do",
-    "icon": "bi-geo-alt-fill",
-    "content": "We provide mentorship, freelance opportunities, and community collaboration projects to empower developers of all levels."
+    "icon": "bi-code-slash",
+    "content": "We collaborate on real-world projects, offer mentorship, and help each other grow in the tech ecosystem."
   },
-  "ourTeam": {
+  "our_team": {
     "title": "Our Team",
-    "icon": "bi-envelope-fill",
-    "content": "Our team consists of skilled developers, designers, and mentors committed to supporting growth and innovation."
+    "icon": "bi-person-bounding-box",
+    "content": "Our team includes developers, designers, and dreamers who work together to bring our ideas to life."
   },
-  "ourGoals": {
+  "our_goals": {
     "title": "Our Goals",
-    "icon": "bi-globe",
-    "content": "Our mission is to celebrate creativity through technology and help every coder shine by building real-world, joyful solutions."
+    "icon": "bi-bullseye",
+    "content": "To empower youth through technology, foster innovation, and make tech fun and accessible to everyone."
   }
 }

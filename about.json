@@ -2,21 +2,93 @@
   "who_we_are": {
     "title": "Who We Are",
     "icon": "bi-people-fill",
-    "content": "At Happycode Technologies, we're more than just a software company; we're a group of people passionate about making technology work for you. We build tools that solve problems, plain and simple. We believe that technology should make your work easier, your life better, and your business more successful. Since our start in 2024, we've been focused on creating software that's both powerful and a joy to use. We're driven by the idea that great software empowers people and businesses to grow. We're always looking ahead, striving to be at the forefront of innovative software solutions. We see ourselves as partners, helping our clients navigate the ever-changing tech landscape. Our core values are: 1. Simplicity, 2. Genuine care for our users, and 3. A commitment to doing things right. We put these values into practice by focusing on providing exceptional support and building reliable and robust systems. Ultimately, we want to create software that helps you achieve your goals and reach your full potential. We're here to help you stay happy and productive."
+    "content": {
+      "header": "More Than Just a Tech Company",
+      "body": "At Happycode Technologies, we're more than just a software company; we're a group of people passionate about making technology work for you. We build tools that solve problems, plain and simple. We believe that technology should make your work easier, your life better, and your business more successful.",
+      "sub_header": "Driven by Values",
+      "sub_body": "Since our start in 2024, we've focused on creating software that's powerful and joyful to use. Our values — Simplicity, Genuine care, and a Commitment to quality — guide everything we do. We aim to empower people and businesses to thrive through innovation and support.",
+      "image": "images/about/about-us.png",
+      "name": "The Happycode Team"
+    }
   },
   "what_we_do": {
     "title": "What We Do",
     "icon": "bi-code-slash",
-    "content": "We collaborate on real-world projects, offer mentorship, and help each other grow in the tech ecosystem."
+    "content": {
+      "header": "Empowering Through Tech",
+      "body": "At Happycode Technologies, we're dedicated to simplifying how you interact with technology. We build software solutions that address real challenges and help people reach their goals.",
+      "sub_header": "What We Offer",
+      "sub_body": "• Software Products: Innovative, easy-to-use tools designed to solve real problems. \n• Developer Training: We equip developers with practical skills to excel in their careers. \n• Strategic Collaborations: Partnering with companies to achieve their software development goals.",
+      "image": "images/about/what-we-do.png",
+      "name": ""
+    }
   },
   "our_team": {
     "title": "Our Team",
     "icon": "bi-person-bounding-box",
-    "content": "Our team includes developers, designers, and dreamers who work together to bring our ideas to life."
+    "content": {
+      "header": "Meet the People Behind the Code",
+      "body": "Our team is made up of creative thinkers, problem-solvers, and passionate tech enthusiasts working together to bring our vision to life.",
+      "sub_header": "Collaboration and Excellence",
+      "sub_body": "Each team member brings unique skills to the table — from development and design to strategy and user experience. Together, we create powerful tools with purpose.",
+      "team_members": [
+        {
+          "name": "Oluwaseyi A.",
+          "role": "Lead Developer",
+          "image": "images/team/oluwaseyi.png"
+        },
+        {
+          "name": "Ada E.",
+          "role": "UI/UX Designer",
+          "image": "images/team/ada.png"
+        },
+        {
+          "name": "Tunde B.",
+          "role": "Project Manager",
+          "image": "images/team/tunde.png"
+        }
+      ],
+      "image": "",
+      "name": ""
+    }
   },
-  "our_goals": {
-    "title": "Our Goals",
-    "icon": "bi-bullseye",
-    "content": "To empower youth through technology, foster innovation, and make tech fun and accessible to everyone."
-  }
+  "our_clients_partners": {
+    "title": "Our Clients & Partners",
+    "icon": "bi-handshake-fill",
+    "content": {
+      "header": "Collaboration That Matters",
+      "body": "We believe great things happen when people work together. That's why we partner with forward-thinking organizations and serve a diverse range of clients.",
+      "sub_header": "Trusted by Innovators",
+      "sub_body": "From startups to NGOs, we’re proud of our partnerships and collaborations that help drive meaningful impact.",
+      "partners": [
+        {
+          "name": "TechNova",
+          "logo": "images/partners/technova-logo.png"
+        },
+        {
+          "name": "CodeYouth",
+          "logo": "images/partners/codeyouth-logo.png"
+        },
+        {
+          "name": "NG Solutions",
+          "logo": "images/partners/ngsolutions-logo.png"
+        }
+      ],
+      "image": "",
+      "name": ""
+    }
+  },
+  "career_availabilities": {
+    "title": "Career Availabilities",
+    "icon": "bi-briefcase-fill",
+    "content": {
+      "header": "Join the Team!",
+      "body": "We're always looking for talented individuals who are passionate about tech and innovation. Whether you're just starting out or looking to level up, there's a place for you here.",
+      "sub_header": "Open Positions",
+      "sub_body": "• Frontend Developer\n• Backend Developer\n• Product Designer\n• Internships Available",
+      "image": "images/about/careers.png",
+      "name": ""
+    }
+  },
+  "fallback_image": "images/logo.png"
 }

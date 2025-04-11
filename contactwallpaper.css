@@ -173,11 +173,11 @@ body.night-mode { /* Sunny Yellow (night) */
 .contact-details .social-media {
   display: flex;
   justify-content: space-around;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .contact-details .social-media i {
-  font-size: 2rem; /* Increase icon size */
+  font-size: 1.5rem; /* Increase icon size */
   color: var(--theme-color);
   cursor: pointer;
   transition: color 0.3s ease;
@@ -185,6 +185,7 @@ body.night-mode { /* Sunny Yellow (night) */
 
 .contact-details .social-media i:hover {
   color: var(--text-color);
+  font-size: 2rem; /* Increase icon size */
 }
 
 /* Headings */
@@ -269,4 +270,16 @@ body.night-mode .contact-form textarea::placeholder {
 /* Button Hover */
 .contact-form button:hover {
   filter: brightness(90%);
+}
+
+.contact-line {
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.contact-divider {
+  border: none;
+  border-top: 2px solid rgba(255, 255, 255, 0.4); /* or use rgba(0,0,0,0.2) for light mode */
+  margin: 0.7rem 0 0.7rem 0;
 }

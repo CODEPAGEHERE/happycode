@@ -40,10 +40,10 @@
                     <a class="nav-link" href="#">PROJECTS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.html">ABOUT</a>
+                    <a class="nav-link active" href="about.html">ABOUT</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="contact.html">CONTACT</a>
+                    <a class="nav-link" href="contact.html">CONTACT</a>
                 </li>
             </ul>
         </div>
@@ -53,57 +53,28 @@
     <!-- Contact Details Glass -->
     <div class="col-md-4 mb-4">
       <div class="glass contact-details text-center p-4">
-	<h4 class="mb-2">Reach us on <i class="bi bi-emoji-smile"></i></h4>
+	<h4 class="mb-2">About us <i class="bi bi-emoji-smile"></i></h4>
 	<br>
-
-			<p class="contact-line"><i class="bi bi-whatsapp"></i> +234 907 223 6203</p>
-			<hr class="contact-divider">
-
-			<p class="contact-line"><i class="bi bi-geo-alt-fill"></i> Alimosho Lagos, Nigeria</p>
-			<hr class="contact-divider">
-
-			<p class="contact-line"><i class="bi bi-envelope-fill"></i> codepage.me@gmail.com</p>
-			<hr class="contact-divider">
-
-			<p class="contact-line"><i class="bi bi-globe"></i> www.happycode.tech</p>
-			<hr class="contact-divider">
-
-			<!-- Social Media Icons -->
-	  <div class="social-media">
-		<a href="https://facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
-		<a href="https://twitter.com" target="_blank"><i class="bi bi-x"></i></a>
-		<a href="https://instagram.com" target="_blank"><i class="bi bi-github"></i></a>
-		<a href="https://instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
-		<a href="https://linkedin.com" target="_blank"><i class="bi bi-tiktok"></i></a>
-	  </div>
-		<br>
-		<p> Copyright &copy; <span id="currentYear"></span> Happycode. All Right Reserved. </p>
-		<p> | HAPPYCODE TECHNOLOGIES | </p>
+	<br>
+		<p class="contact-line" data-key="who_we_are"><i class="bi bi-people-fill"></i> Who we are</p>
+		<hr class="contact-divider">
+		<p class="contact-line" data-key="what_we_do"><i class="bi bi-code-slash"></i> What we do</p>
+		<hr class="contact-divider">
+		<p class="contact-line" data-key="our_team"><i class="bi bi-person-bounding-box"></i> Our team</p>
+		<hr class="contact-divider">
+		<p class="contact-line" data-key="our_goals"><i class="bi bi-bullseye"></i> Our goals</p>
+		<hr class="contact-divider">
       </div>
     </div>
 
     <!-- Contact Form Glass -->
     <div class="col-md-7">
-      <div class="glass contact-form p-4">
-        <h4 class="mb-4 text-center">Get In T<i class="bi bi-emoji-laughing" style="font-size:16px;"></i>uch </h4>
-            <form action="https://formspree.io/f/mqapwara" method="POST">
-        <div class="form-group">
-            <label for="name"><i class="bi bi-person-fill"></i> Full Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Your Full Name" required>
-        </div>
-        <div class="form-group">
-            <label for="email"><i class="bi bi-envelope-fill"></i> Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
-        </div>
-        <div class="form-group">
-            <label for="message"><i class="bi bi-chat-dots-fill"></i> Message</label>
-            <textarea class="form-control" id="message" name="message" rows="4" placeholder="What Message do you have for us  ?" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-theme btn-block">
-            <i class="bi bi-send-fill"></i> Send Message
-        </button>
-    </form>
-      </div>
+      <div class="glass contact-form p-4" id="about-content">
+		<div class="about-content text-center" id="aboutContent">
+		  <h4>Select an option on the left to learn more!</h4>
+		</div>
+
+		</div>
     </div>
   </div>
 </div>
@@ -156,5 +127,7 @@
     <script src="type.js"></script>
     <script src="float.js"></script>
 	<script src="copy.js"></script>
+	<script src="about.js"></script>
+
 </body>
 </html>

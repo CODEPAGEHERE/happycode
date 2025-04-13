@@ -1,0 +1,21 @@
+{
+  {
+  "web_dev": [
+    {
+      "title": "Portfolio Website",
+      "description": "A responsive portfolio using HTML, CSS, and GSAP.",
+      "images": ["portfolio1.png", "portfolio2.png", "portfolio3.png"],
+      "link": "https://example.com"
+    },
+    {
+      "title": "E-commerce Store",
+      "description": "Custom-built shopping experience with cart and checkout.",
+      "image": "store.png",
+      "link": "https://example.com"
+    }
+  ],
+  "mobile_dev": [ ... ],
+  "software_dev": [ ... ],
+  "networking": [ ... ],
+  "games": [ ... ]
+}

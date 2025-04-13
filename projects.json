@@ -1,21 +1,93 @@
 {
-  {
-  "web_dev": [
+  "categories": [
     {
-      "title": "Portfolio Website",
-      "description": "A responsive portfolio using HTML, CSS, and GSAP.",
-      "images": ["portfolio1.png", "portfolio2.png", "portfolio3.png"],
-      "link": "https://example.com"
+      "key": "web_dev",
+      "name": "Websites",
+      "icon": "bi-window",
+      "projects": [
+        {
+          "title": "HappyCode Portfolio",
+          "description": "Colorful animated personal portfolio using GSAP & jQuery.",
+          "images": ["happycode1.png", "happycode2.png"],
+          "link": "https://happycode.dev"
+        },
+        {
+          "title": "Startup Landing Page",
+          "description": "Clean landing page for a startup, built with Bootstrap.",
+          "images": ["startup1.png", "startup2.png"],
+          "link": "https://startup.dev"
+        }
+      ]
     },
     {
-      "title": "E-commerce Store",
-      "description": "Custom-built shopping experience with cart and checkout.",
-      "image": "store.png",
-      "link": "https://example.com"
+      "key": "web_apps",
+      "name": "Web Apps",
+      "icon": "bi-laptop",
+      "projects": [
+        {
+          "title": "Task Manager",
+          "description": "Vue + Node.js based task app for daily productivity.",
+          "images": ["task1.png", "task2.png"],
+          "link": "https://tasks.dev"
+        },
+        {
+          "title": "Analytics Dashboard",
+          "description": "Custom dashboard for monitoring real-time app metrics.",
+          "images": ["dashboard1.png", "dashboard2.png"],
+          "link": "https://analytics.dev"
+        }
+      ]
+    },
+    {
+      "key": "mobile_dev",
+      "name": "Mobile Apps",
+      "icon": "bi-phone",
+      "projects": [
+        {
+          "title": "Budget Tracker",
+          "description": "Cross-platform app using Flutter to track expenses.",
+          "images": ["budget1.png", "budget2.png"],
+          "link": "https://budgetapp.dev"
+        },
+        {
+          "title": "QuickNotes",
+          "description": "Note-taking app with cloud sync for Android/iOS.",
+          "images": ["quicknotes1.png", "quicknotes2.png"],
+          "link": "https://quicknotes.dev"
+        }
+      ]
+    },
+    {
+      "key": "software_dev",
+      "name": "System Software",
+      "icon": "bi-hdd-network",
+      "projects": [
+        {
+          "title": "GoRoute OS",
+          "description": "A lightweight router OS with built-in NAT, traffic monitor, and bandwidth control.",
+          "images": ["goroute1.png", "goroute2.png"],
+          "link": "https://goroute.dev"
+        },
+        {
+          "title": "GoRoute Web Panel",
+          "description": "Admin panel for GoRoute with real-time traffic stats and config control.",
+          "images": ["goroutepanel1.png"],
+          "link": "https://gorouteweb.dev"
+        }
+      ]
+    },
+    {
+      "key": "wishly",
+      "name": "Wishly",
+      "icon": "bi-gift",
+      "projects": [
+        {
+          "title": "Wishly Beta",
+          "description": "Birthday app for celebration, reminders, and gifting. Built with Vue & Koa.",
+          "images": ["wishly1.png", "wishly2.png"],
+          "link": "https://wishly.dev"
+        }
+      ]
     }
-  ],
-  "mobile_dev": [ ... ],
-  "software_dev": [ ... ],
-  "networking": [ ... ],
-  "games": [ ... ]
+  ]
 }

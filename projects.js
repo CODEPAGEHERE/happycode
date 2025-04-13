@@ -1,15 +1,16 @@
+<script>
 $(document).ready(function () {
-  const fallbackImage = "fallback.jpg"; // Your fallback image in images/
+  const fallbackImage = "fallback.jpg";
 
   $.getJSON("projects.json", function (data) {
     $(".contact-line").on("click", function () {
       const key = $(this).data("key");
-      const projects = data[key];
+      const category = data.categories.find(cat => cat.key === key);
 
-      if (projects && projects.length > 0) {
-        let contentHtml = `<h2><i class="bi bi-folder2-open"></i> ${$(this).text()}</h2><div class="row">`;
+      if (category && category.projects.length > 0) {
+        let contentHtml = `<h2><i class="bi ${category.icon}"></i> ${category.name}</h2><div class="row">`;
 
-        projects.forEach(project => {
+        category.projects.forEach(project => {
           let imagesHtml = "";
           (project.images || []).forEach((img, index) => {
             imagesHtml += `
@@ -51,3 +52,4 @@ $(document).ready(function () {
     });
   });
 });
+</script>

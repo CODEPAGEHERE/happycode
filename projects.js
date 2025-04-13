@@ -1,6 +1,5 @@
-<script>
 $(document).ready(function () {
-  const fallbackImage = "fallback.jpg";
+  const fallbackImage = "img/default.png";
 
   $.getJSON("projects.json", function (data) {
     $(".contact-line").on("click", function () {
@@ -52,4 +51,4 @@ $(document).ready(function () {
     });
   });
 });
-</script>
+

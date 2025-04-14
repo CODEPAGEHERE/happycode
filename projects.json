@@ -59,7 +59,7 @@
     },
     {
       "key": "software_dev",
-      "name": "System Software",
+      "name": "Computer Softwares",
       "icon": "bi-hdd-network",
       "projects": [
         {
@@ -71,6 +71,25 @@
         {
           "title": "GoRoute Web Panel",
           "description": "Admin panel for GoRoute with real-time traffic stats and config control.",
+          "images": ["goroutepanel1.png"],
+          "link": "https://gorouteweb.dev"
+        }
+      ]
+    },
+	{
+      "key": "myschool_project",
+      "name": "My School Project",
+      "icon": "bi-bi-brush",
+      "projects": [
+        {
+          "title": "Myexamspace",
+          "description": "An offline Examination web application designed to serve cbt exam on a LAN no internet required ",
+          "images": ["mxp.jpeg", "goroute2.png"],
+          "link": "https://goroute.dev"
+        },
+        {
+          "title": "working bubble",
+          "description": "Admin panel for managing all myschool applications for effective dissemination.",
           "images": ["goroutepanel1.png"],
           "link": "https://gorouteweb.dev"
         }

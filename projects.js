@@ -51,7 +51,7 @@ $(document).ready(function () {
                 <div class="card-body">
                   <h5 class="card-title">${project.title}</h5>
                   <p class="card-text">${project.description}</p>
-                  <a href="${project.link}" class="btn btn-primary" target="_blank">View Project</a>
+                  <a href="${project.link}" class="btn btn-secondary" target="_blank">View Project</a>
                 </div>
               </div>
             </div>

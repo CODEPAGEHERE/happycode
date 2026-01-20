@@ -4,7 +4,7 @@ $(document).ready(function () {
   $.getJSON("about.json", function (data) {
     aboutData = data;
 
-    const fallbackImage = data.fallback_image || "images/logo.png";
+    const fallbackImage = data.fallback_image || "img/default.png";
 
     $(".contact-line").on("click", function () {
       const key = $(this).data("key");

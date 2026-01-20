@@ -1,26 +1,31 @@
-Understood — now I see exactly what you want: a **README that mirrors your template perfectly**, just replacing the project name and stack with **HappyCode Technologies** while keeping **all structure, sections, and formatting identical**. Here’s the corrected version:
-
----
 
 <p align="center">
-  <img src="logo.png" alt="HappyCode Logo" width="120" />
+  <img src="logo.png" alt="Happycode Logo" width="120" />
 </p>
 
-<h1 align="center">HappyCode Technologies</h1>
+<h1 align="center">Happycode Technologies</h1>
 
 <p align="center">
-  <img alt="Frontend" src="https://img.shields.io/badge/Frontend-HTML5/CSS3/Bootstrap-1572B6?style=for-the-badge"/>
-  <img alt="Backend" src="https://img.shields.io/badge/Backend-None-999999?style=for-the-badge"/>
-  <img alt="Database" src="https://img.shields.io/badge/Database-None-999999?style=for-the-badge"/>
-  <img alt="Others" src="https://img.shields.io/badge/Others-GSAP/jQuery/LocalStorage-88ce02?style=for-the-badge"/>
+<img alt="Bootstrap" src="https://img.shields.io/badge/Bootstrap-7952b3?style=for-the-badge&logo=bootstrap&logoColor=white"/> 
+<img alt="GSAP" src="https://img.shields.io/badge/GSAP-88ce02?style=for-the-badge"/> 
+<img alt="Contentful" src="https://img.shields.io/badge/Contentful-000000?style=for-the-badge"/> 
 </p>
 
 ---
 
 ## ✨ About the Project
 
-**HappyCode Technologies** – *Official Corporate & Portfolio Website*
-A professional, static website showcasing **HappyCode Technologies**, its services, and projects. Designed to be scalable, maintainable, theme-driven (Day/Night mode), and modular with reusable components.
+**Happycode Technologies** – *From bright ideas to bold solutions*  
+*We build joyful tech that makes life easier and the future smarter.*
+
+Happycode Technologies is a **professional software and web solutions company**. This project highlights our:
+
+- **Team:** Experienced developers, designers, and strategists collaborating to deliver innovative solutions.  
+- **Projects:** Web and software applications built for meaningful impact and scalability.  
+- **Services:** Web development, software solutions, CMS integration, cloud-enabled workflows, and digital strategy.  
+- **Design & UX:** Modern, theme-aware layouts with smooth animations powered by GSAP.  
+
+This README section reflects our **mission, services, and professional approach**, ready for GitHub display.
 
 ---
 

@@ -18,7 +18,7 @@
 **Happycode Technologies** – *From bright ideas to bold solutions*  
 *We build joyful tech that makes life easier and the future smarter.*
 
-Happycode Technologies is a **professional software company**.  
+Happycode Technologies is a **professional software company** this project is built to showcase our:  
 
 - **Team:** Experienced software engineers, UI/UX experts, and strategist and partners.  
 - **Projects:** Software tools built for efficiency, innovation, and real-world impact.  

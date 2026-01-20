@@ -38,3 +38,14 @@ $(document).ready(function() {
 
     setTimeout(typeWriter, 1000); // Start typing after 0.5 second
 });
+
+
+
+....................
+window.addEventListener('load', () => {
+  const loader = document.getElementById('loader');
+  loader.style.opacity = '0';
+  setTimeout(() => loader.style.display = 'none', 500);
+});
+
+gsap.from(".loader-logo", {duration:1, y:-20, opacity:0, ease:"power2.out"});

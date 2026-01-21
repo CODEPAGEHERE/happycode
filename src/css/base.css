@@ -1,46 +1,53 @@
+/* =========================
+   THEME VARIABLES
+========================= */
+
+/* DAY (default) */
+:root {
+  --bg-color: #ffffff;
+  --bg-gradient:
+    radial-gradient(circle, rgba(255,255,255,0.98) 70%, rgba(173,216,230,0.12) 90%);
+  --text-color: #6495ed; /* cornflowerblue */
+  --accent-color: #0d92f4;
+}
+
+/* NIGHT */
+body.night-mode {
+  --bg-color: #808080;
+  --bg-gradient:
+    radial-gradient(circle, #808080 10%, rgba(0,0,0,0.55) 95%),
+    radial-gradient(circle, rgba(20,20,20,0.35) 20%, rgba(0,0,0,0.9) 90%);
+  --text-color: #f3c623; /* gold */
+  --accent-color: #f3c623;
+}
+
+/* =========================
+   BASE BODY
+========================= */
+
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100%;
 }
 
-
-
-/* BASE */
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #ffffff;
-  color: #000000;
+  background-color: var(--bg-color);
+  background-image: var(--bg-gradient);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
+  color: var(--text-color);
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
-#hc-page {
-  min-height: 100vh;
-}
-
-
-
-
-
-/* LOADER */
-.hc-loader {
+/* Optional night overlay */
+body.night-mode::before {
+  content: "";
   position: fixed;
   inset: 0;
-  background: #000;
-  color: #fff;
-  z-index: 9999;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hc-loader-inner {
-  font-size: 0.9rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  opacity: 0.85;
-}
-
-.hc-loader-text {
-  white-space: nowrap;
+  background: rgba(0,0,0,0.2);
+  pointer-events: none;
+  z-index: 0;
 }

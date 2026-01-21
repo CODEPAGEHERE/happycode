@@ -1,29 +1,33 @@
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
+  const body = document.body;
+  const toggle = document.getElementById("hc-theme-toggle");
 
-  const loaderMount = document.getElementById("hc-loader");
-  if (!loaderMount) return;
+  if (!toggle) return;
 
-  try {
-    // Inject loader component
-    const res = await fetch("../components/loader.html");
-    loaderMount.innerHTML = await res.text();
+  // Decide initial theme
+  const getAutoTheme = () => {
+    const hour = new Date().getHours();
+    return hour >= 6 && hour < 18 ? "day" : "night";
+  };
 
-    // Animate loader out
-    if (window.gsap) {
-      gsap.to(".hc-loader", {
-        opacity: 0,
-        duration: 0.6,
-        ease: "power2.out",
-        delay: 0.4,
-        onComplete: () => {
-          loaderMount.innerHTML = "";
-        }
-      });
+  const savedTheme = localStorage.getItem("hc-theme") || getAutoTheme();
+
+  applyTheme(savedTheme);
+
+  // Toggle handler
+  toggle.addEventListener("change", () => {
+    const theme = toggle.checked ? "night" : "day";
+    localStorage.setItem("hc-theme", theme);
+    applyTheme(theme);
+  });
+
+  function applyTheme(theme) {
+    if (theme === "night") {
+      body.classList.add("night-mode");
+      toggle.checked = true;
+    } else {
+      body.classList.remove("night-mode");
+      toggle.checked = false;
     }
-
-  } catch (err) {
-    console.error("Loader failed to load", err);
-    loaderMount.innerHTML = "";
   }
-
 });

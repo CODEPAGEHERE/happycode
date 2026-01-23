@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   /* -------------------------
      THEME SYSTEM
   ------------------------- */
-
   const toggle = document.getElementById("hc-theme-toggle");
 
   const getAutoTheme = () => {
@@ -28,4 +27,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  
+}); // <-- THIS WAS MISSING

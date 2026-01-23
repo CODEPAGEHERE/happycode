@@ -3,8 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("hc-loader");
 
   /* -------------------------
-     THEME SETUP
+     THEME SYSTEM
   ------------------------- */
+
+  const toggle = document.getElementById("hc-theme-toggle");
 
   const getAutoTheme = () => {
     const hour = new Date().getHours();
@@ -16,39 +18,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function applyTheme(theme) {
     body.classList.toggle("night-mode", theme === "night");
+    localStorage.setItem("hc-theme", theme);
+    if (toggle) toggle.checked = theme === "night";
+  }
+
+  if (toggle) {
+    toggle.addEventListener("change", () => {
+      applyTheme(toggle.checked ? "night" : "day");
+    });
   }
 
   /* -------------------------
-     LOADER LOGIC
+     LOADER
   ------------------------- */
 
   window.addEventListener("load", () => {
-    // Wait 3 seconds AFTER full load
     setTimeout(() => {
       gsap.to(loader, {
         opacity: 0,
         duration: 0.8,
         ease: "power2.out",
-        onComplete: () => {
-          loader.style.display = "none";
-        }
+        onComplete: () => loader.remove()
       });
     }, 3000);
   });
+
+  /* -------------------------
+     HEADER INJECTION
+  ------------------------- */
+
+  fetch("/components/header.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("hc-header").innerHTML = html;
+    })
+    .catch(err => console.error("Header load failed:", err));
 });
 
 
-
-
-/* -------------------------
-   HEADER INJECTION
-------------------------- */
-
-fetch("/components/header.html")
+// Inject loader
+fetch("/components/loader.html")
   .then(res => res.text())
   .then(html => {
-    document.getElementById("hc-header").innerHTML = html;
-  })
-  .catch(err => {
-    console.error("Header load failed:", err);
+    document.getElementById("hc-loader").innerHTML = html;
   });

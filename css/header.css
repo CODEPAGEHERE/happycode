@@ -1,0 +1,25 @@
+/* Pills */
+.nav-pills .nav-link {
+  font-weight: bold;
+  color: var(--accent-color);
+  padding: 8px 20px;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.nav-pills .nav-link.active {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+/* Dark mode */
+body.night-mode .nav-pills .nav-link {
+  color: var(--text-color);
+}
+
+body.night-mode .nav-pills .nav-link.active {
+  background-color: var(--text-color);
+  color: black;
+}
+
+/* Theme switch styling omitted for brevity (keep your existing) */

@@ -36,3 +36,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 3000);
   });
 });
+
+
+
+
+/* -------------------------
+   HEADER INJECTION
+------------------------- */
+
+fetch("/components/header.html")
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById("hc-header").innerHTML = html;
+  })
+  .catch(err => {
+    console.error("Header load failed:", err);
+  });

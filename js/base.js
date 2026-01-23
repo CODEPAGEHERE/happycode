@@ -28,37 +28,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* -------------------------
-     LOADER
-  ------------------------- */
-
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      gsap.to(loader, {
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.out",
-        onComplete: () => loader.remove()
-      });
-    }, 3000);
-  });
-
-  /* -------------------------
-     HEADER INJECTION
-  ------------------------- */
-
-  fetch("/components/header.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("hc-header").innerHTML = html;
-    })
-    .catch(err => console.error("Header load failed:", err));
-});
-
-
-// Inject loader
-fetch("/components/loader.html")
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById("hc-loader").innerHTML = html;
-  });
+  

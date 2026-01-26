@@ -1,60 +1,43 @@
 // js/loader.js
 document.addEventListener("DOMContentLoaded", () => {
-  const mount = document.getElementById("hc-loader");
-  if (!mount) return;
+  const loader = document.getElementById("hc-loader");
+  let released = false;
 
-  let loaderRemoved = false;
+  const release = () => {
+    if (released) return;
+    released = true;
 
-  const removeLoader = (overlay) => {
-    if (loaderRemoved || !overlay) return;
-    loaderRemoved = true;
+    document.body.classList.add("hc-ready");
+
+    if (!loader) return;
 
     if (window.gsap) {
-      gsap.to(overlay, {
+      gsap.to(loader, {
         opacity: 0,
         duration: 0.8,
         ease: "power2.out",
-        onComplete: () => overlay.remove()
+        onComplete: () => loader.remove()
       });
     } else {
-      overlay.remove(); // GSAP failed → hard remove
+      loader.remove();
     }
   };
 
-  fetch("/components/loader.html")
-    .then(res => res.text())
-    .then(html => {
-      mount.innerHTML = html;
+  /* -------------------------
+     FAILSAFE (HARD STOP)
+  ------------------------- */
+  setTimeout(release, 10000);
 
-      const overlay = mount.querySelector(".hc-loader-overlay");
-      if (!overlay) return;
-
-      /* -------------------------
-         FAILSAFE (ABSOLUTE MAX)
-      ------------------------- */
-      const failsafeTimer = setTimeout(() => {
-        console.warn("Loader failsafe triggered");
-        removeLoader(overlay);
-      }, 12000);
-
-      /* -------------------------
-         NORMAL EXIT
-      ------------------------- */
-      const normalExit = () => {
-        setTimeout(() => {
-          clearTimeout(failsafeTimer);
-          removeLoader(overlay);
-        }, 3000);
-      };
-
-      if (document.readyState === "complete") {
-        normalExit();
-      } else {
-        window.addEventListener("load", normalExit, { once: true });
-      }
-    })
-    .catch(err => {
-      console.error("Loader injection failed:", err);
-      mount.remove(); // nothing to show → unblock UI
-    });
+  /* -------------------------
+     NORMAL EXIT
+  ------------------------- */
+  if (document.readyState === "complete") {
+    setTimeout(release, 3000);
+  } else {
+    window.addEventListener(
+      "load",
+      () => setTimeout(release, 3000),
+      { once: true }
+    );
+  }
 });

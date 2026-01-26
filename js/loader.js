@@ -1,28 +1,34 @@
-// loader.js
+// js/loader.js
 document.addEventListener("DOMContentLoaded", () => {
-  const hcLoader = document.getElementById("hc-loader");
+  const mount = document.getElementById("hc-loader");
 
-  // Inject loader HTML
   fetch("/components/loader.html")
     .then(res => res.text())
     .then(html => {
-      hcLoader.innerHTML = html;
+      mount.innerHTML = html;
 
-      // Now the loader overlay exists
-      const loaderOverlay = hcLoader.querySelector(".hc-loader-overlay");
-      if (!loaderOverlay) return;
+      const overlay = mount.querySelector(".hc-loader-overlay");
+      if (!overlay) return;
 
-      // Wait for the full page load
-      window.addEventListener("load", () => {
+      const hideLoader = () => {
         setTimeout(() => {
-          gsap.to(loaderOverlay, {
+          gsap.to(overlay, {
             opacity: 0,
             duration: 0.8,
             ease: "power2.out",
-            onComplete: () => loaderOverlay.remove(),
+            onComplete: () => overlay.remove()
           });
-        }, 3000); // Optional delay
-      });
+        }, 3000);
+      };
+
+      // IMPORTANT PART 👇
+      if (document.readyState === "complete") {
+        // page already loaded → run immediately
+        hideLoader();
+      } else {
+        // page still loading → wait
+        window.addEventListener("load", hideLoader, { once: true });
+      }
     })
     .catch(err => console.error("Loader injection failed:", err));
 });

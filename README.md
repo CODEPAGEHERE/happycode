@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="logo.png" alt="Happycode Logo" width="120" />
+  <img src="https://ik.imagekit.io/happycode100/happycode/samp.jpeg" alt="Happycode Logo" width="120" />
 </p>
 
 <h1 align="center">Happycode Technologies</h1>

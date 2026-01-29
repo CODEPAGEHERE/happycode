@@ -1,30 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
-  const loader = document.getElementById("hc-loader");
 
   /* -------------------------
      THEME SYSTEM
   ------------------------- */
-  const toggle = document.getElementById("hc-theme-toggle");
-
   const getAutoTheme = () => {
     const hour = new Date().getHours();
     return hour >= 6 && hour < 18 ? "day" : "night";
   };
 
-  const savedTheme = localStorage.getItem("hc-theme") || getAutoTheme();
-  applyTheme(savedTheme);
-
   function applyTheme(theme) {
     body.classList.toggle("night-mode", theme === "night");
     localStorage.setItem("hc-theme", theme);
+
+    const toggle = document.getElementById("hc-theme-toggle");
     if (toggle) toggle.checked = theme === "night";
   }
 
-  if (toggle) {
-    toggle.addEventListener("change", () => {
-      applyTheme(toggle.checked ? "night" : "day");
-    });
-  }
+  const savedTheme = localStorage.getItem("hc-theme") || getAutoTheme();
+  applyTheme(savedTheme);
 
-}); // <-- THIS WAS MISSING
+  // Listen for toggle even if injected later
+  document.addEventListener("change", (e) => {
+    if (e.target && e.target.id === "hc-theme-toggle") {
+      applyTheme(e.target.checked ? "night" : "day");
+    }
+  });
+});

@@ -1,16 +1,17 @@
-// js/loader.js
 document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("hc-loader");
+  if (!loader) return;
+
   let released = false;
 
-  const release = () => {
+  const releaseLoader = () => {
     if (released) return;
     released = true;
 
+    // Show page content
     document.body.classList.add("hc-ready");
 
-    if (!loader) return;
-
+    // Fade out loader
     if (window.gsap) {
       gsap.to(loader, {
         opacity: 0,
@@ -19,25 +20,29 @@ document.addEventListener("DOMContentLoaded", () => {
         onComplete: () => loader.remove()
       });
     } else {
-      loader.remove();
+      loader.style.transition = "opacity 0.8s ease";
+      loader.style.opacity = "0";
+      setTimeout(() => loader.remove(), 850);
     }
   };
 
-  /* -------------------------
-     FAILSAFE (HARD STOP)
-  ------------------------- */
-  setTimeout(release, 10000);
+  // -------------------------
+  // FAILSAFE: max 15s
+  // -------------------------
+  const FAILSAFE_MS = 15000;
+  const failsafe = setTimeout(releaseLoader, FAILSAFE_MS);
 
-  /* -------------------------
-     NORMAL EXIT
-  ------------------------- */
-  if (document.readyState === "complete") {
-    setTimeout(release, 3000);
-  } else {
-    window.addEventListener(
-      "load",
-      () => setTimeout(release, 3000),
-      { once: true }
-    );
-  }
+  // -------------------------
+  // NORMAL EXIT: page fully loaded + 5s
+  // -------------------------
+  window.addEventListener(
+    "load",
+    () => {
+      setTimeout(() => {
+        clearTimeout(failsafe);
+        releaseLoader();
+      }, 5000); // 5 seconds after full load
+    },
+    { once: true }
+  );
 });

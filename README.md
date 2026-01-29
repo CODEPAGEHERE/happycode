@@ -21,7 +21,7 @@
 Happycode Technologies is a **software company** that provides easy and efffective tech tools and solutions.
 this project is built to showcase our:  
 
-- **Team:** Experienced software engineers, UI/UX experts, and strategist and partners.  
+- **Team:** Experienced software engineers, UI/UX experts, strategist and partners.  
 - **Projects:** Software tools built for efficiency, innovation, and real-world impact.  
 - **Services:** Software solutions, mentorship, collaboration, and technology consulting.  
 

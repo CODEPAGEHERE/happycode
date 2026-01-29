@@ -9,6 +9,7 @@
   background-image: var(--bg-gradient);
   z-index: 9999;
   opacity: 1;
+  transition: opacity 0.8s ease; /* single declaration */
 }
 
 /* Inner container */

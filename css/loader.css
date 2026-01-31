@@ -98,3 +98,17 @@
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+/* show day logo by default */
+.hc-logo-night {
+  display: none;
+}
+
+/* when night mode is active */
+body.night-mode .hc-logo-day {
+  display: none;
+}
+
+body.night-mode .hc-logo-night {
+  display: block;
+}

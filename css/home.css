@@ -1,0 +1,103 @@
+.hc-home {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.cloud-container {
+  position: relative;
+  width: min(420px, 90vw);
+  height: 260px;
+  display: grid;
+  place-items: center;
+}
+
+.big-floating-cloud {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  inset: 0;
+  animation: floatCloud 4s ease-in-out infinite;
+}
+
+/* show correct cloud per theme */
+#night-cloud { display: none; }
+body.night-mode #day-cloud { display: none; }
+body.night-mode #night-cloud { display: block; }
+
+@keyframes floatCloud {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.home-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 2;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* animated text */
+.animated-text {
+  list-style: none;
+  display: flex;
+  gap: 0.35rem;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.letter {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-color);
+  animation: bounce 1.2s ease-in-out infinite;
+}
+
+.letter:nth-child(1) { animation-delay: 0s; }
+.letter:nth-child(2) { animation-delay: 0.08s; }
+.letter:nth-child(3) { animation-delay: 0.16s; }
+.letter:nth-child(4) { animation-delay: 0.24s; }
+.letter:nth-child(5) { animation-delay: 0.32s; }
+.letter:nth-child(6) { animation-delay: 0.40s; }
+.letter:nth-child(7) { animation-delay: 0.48s; }
+.letter:nth-child(8) { animation-delay: 0.56s; }
+.letter:nth-child(9) { animation-delay: 0.64s; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.85; }
+  50% { transform: translateY(-10px); opacity: 1; }
+}
+
+/* typewriter */
+.typewriter-container {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.typewriter-text {
+  display: inline-block;
+  border-right: 2px solid var(--accent-color);
+  padding-right: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 3s steps(24) forwards, blink 0.7s infinite;
+}
+
+@keyframes typing {
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}

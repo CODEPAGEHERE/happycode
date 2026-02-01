@@ -7,9 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((html) => {
       mount.innerHTML = html;
 
-      // Run animation AFTER component is injected
       if (window.gsap) {
-        gsap.to(".big-floating-cloud", {
+        gsap.to(".cloud-container", {
           y: 30,
           repeat: -1,
           yoyo: true,

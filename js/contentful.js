@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Init once globally
   window.hcContentful = contentful.createClient({
-    space: "YOUR_SPACE_ID",
-    accessToken: "YOUR_DELIVERY_API_KEY",
+    space: "6nds636k8ebm",
+    accessToken: "Lbv0LdPDTZlrRCAU2z2Yu6QiKpn3ilSitBXlMtjx22k",
   });
 
   console.log("✅ Contentful client ready");

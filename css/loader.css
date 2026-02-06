@@ -1,13 +1,21 @@
-/* Loader Overlay */
-.hc-loader-overlay {
+/* Lock loader container */
+#hc-loader {
   position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+/* Overlay */
+.hc-loader-overlay {
+  position: absolute;
   inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background: var(--bg-color);
   background-image: var(--bg-gradient);
-  z-index: 9999;
+  overflow: hidden;
   opacity: 1;
   transition: opacity 0.8s ease;
 }
@@ -15,83 +23,31 @@
 /* Inner container */
 .hc-loader-inner {
   position: relative;
-  width: 150px;       /* bigger loader area */
+  width: 150px;
   height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Logo image */
+/* Logo */
 .hc-loader-logo-img {
-  width: 100px;       /* logo size */
+  width: 100px;
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  z-index: 2;         /* on top of spinner */
+  z-index: 2;
 }
 
-/* Spinner orbiting the logo */
+/* Spinner */
 .hc-loader-spinner {
   position: absolute;
-  width: 150px;       /* same as container for full orbit */
+  width: 150px;
   height: 150px;
   border: 4px solid rgba(0,0,0,0.1);
   border-top-color: var(--accent-color);
   border-radius: 50%;
-  animation: spin 2s linear infinite; /* slower rotation */
-  top: 0;
-  left: 0;
-  box-sizing: border-box;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-/* Loader Overlay */
-.hc-loader-overlay {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--bg-color);
-  background-image: var(--bg-gradient);
-  z-index: 9999;
-  opacity: 1;
-  transition: opacity 0.8s ease;
-}
-
-/* Inner container */
-.hc-loader-inner {
-  position: relative;
-  width: 150px;       /* bigger loader area */
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Logo image */
-.hc-loader-logo-img {
-  width: 100px;       /* logo size */
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  z-index: 2;         /* on top of spinner */
-}
-
-/* Spinner orbiting the logo */
-.hc-loader-spinner {
-  position: absolute;
-  width: 150px;       /* same as container for full orbit */
-  height: 150px;
-  border: 4px solid rgba(0,0,0,0.1);
-  border-top-color: var(--accent-color);
-  border-radius: 50%;
-  animation: spin 2s linear infinite; /* slower rotation */
-  top: 0;
-  left: 0;
+  animation: spin 2s linear infinite;
   box-sizing: border-box;
 }
 
@@ -99,12 +55,11 @@
   to { transform: rotate(360deg); }
 }
 
-/* show day logo by default */
+/* Theme logo switching */
 .hc-logo-night {
   display: none;
 }
 
-/* when night mode is active */
 body.night-mode .hc-logo-day {
   display: none;
 }

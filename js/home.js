@@ -55,11 +55,11 @@ async function loadHomeFromContentful() {
     console.log("✅ Found entry:", entry);
     console.log("🧾 Entry fields:", entry.fields);
 
-    const { headline, daylogo, nightlogo, typing } = entry.fields;
+    const { headliner, daylogo, nitelogo, typing } = entry.fields;
 
-    console.log("headline:", headline);
+    console.log("headline:", headliner);
     console.log("daylogo:", daylogo);
-    console.log("nightlogo:", nightlogo);
+    console.log("nightlogo:", nitelogo);
     console.log("typing:", typing);
 
     // Headline

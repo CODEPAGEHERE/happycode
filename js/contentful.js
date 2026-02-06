@@ -1,14 +1,29 @@
 // /js/contentful.js
-document.addEventListener("DOMContentLoaded", () => {
+
+async function waitForConfig(maxWaitMs = 2000) {
+  const start = Date.now();
+
+  while (!window.HC_CONFIG) {
+    if (Date.now() - start > maxWaitMs) {
+      console.error("❌ HC_CONFIG missing after waiting.");
+      return false;
+    }
+
+    await new Promise(resolve => setTimeout(resolve, 50));
+  }
+
+  return true;
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
   if (!window.contentful) {
     console.error("❌ Contentful SDK not loaded.");
     return;
   }
 
-  if (!window.HC_CONFIG) {
-    console.error("❌ HC_CONFIG missing. Did you load /js/config.js ?");
-    return;
-  }
+  const ready = await waitForConfig();
+
+  if (!ready) return;
 
   const { CONTENTFUL_SPACE_ID, CONTENTFUL_DELIVERY_TOKEN } = window.HC_CONFIG;
 

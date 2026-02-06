@@ -5,8 +5,6 @@
 
     window.HC_CONFIG = cfg;
 
-    console.log("✅ Config loaded:", cfg);
-
     // signal readiness
     window.dispatchEvent(new Event("hc:config-ready"));
   } catch (err) {

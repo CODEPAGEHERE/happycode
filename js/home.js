@@ -1,4 +1,3 @@
-// /js/home.js
 document.addEventListener("DOMContentLoaded", () => {
   const mount = document.getElementById("hc-page");
   if (!mount) return;
@@ -13,15 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       initHomeAnimation();
 
-      // wait for contentful client
+      // wait for Contentful client
       if (window.hcContentful) {
         loadHomeFromContentful();
       } else {
-        window.addEventListener(
-          "hc:contentful-ready",
-          loadHomeFromContentful,
-          { once: true }
-        );
+        window.addEventListener("hc:contentful-ready", loadHomeFromContentful, { once: true });
       }
     })
     .catch((err) => console.error("Home load failed:", err));
@@ -42,22 +37,22 @@ async function loadHomeFromContentful() {
 
     const { headliner, daylogo, nitelogo, typing } = entry.fields;
 
-    // headline (FIXED name)
+    // headline
     const headlineEl = document.getElementById("hc-home-title");
     if (headlineEl) headlineEl.textContent = headliner || "";
 
-    // logo (FIXED names)
+    // logo
     const logoEl = document.getElementById("hc-home-logo");
     if (logoEl) {
       const isNight = document.body.classList.contains("night-mode");
       const src = isNight ? nitelogo : daylogo;
-
       if (typeof src === "string") logoEl.src = src;
     }
 
     // typing
     const typeEl = document.getElementById("hc-home-typewriter");
     if (typeEl) typeEl.textContent = resolveTypingText(typing);
+
   } catch (err) {
     console.error("Contentful fetch failed:", err);
   }

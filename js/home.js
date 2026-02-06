@@ -1,10 +1,7 @@
 // /js/home.js
 document.addEventListener("DOMContentLoaded", () => {
   const mount = document.getElementById("hc-page");
-  if (!mount) {
-    console.warn("⚠️ #hc-page not found.");
-    return;
-  }
+  if (!mount) return;
 
   fetch("/components/home.html")
     .then((res) => {
@@ -15,18 +12,24 @@ document.addEventListener("DOMContentLoaded", () => {
       mount.innerHTML = html;
 
       initHomeAnimation();
-      loadHomeFromContentful();
+
+      // wait for contentful client
+      if (window.hcContentful) {
+        loadHomeFromContentful();
+      } else {
+        window.addEventListener(
+          "hc:contentful-ready",
+          loadHomeFromContentful,
+          { once: true }
+        );
+      }
     })
-    .catch((err) => console.error("❌ Home load failed:", err));
+    .catch((err) => console.error("Home load failed:", err));
 });
 
 async function loadHomeFromContentful() {
   const client = window.hcContentful;
-
-  if (!client) {
-    console.error("❌ Contentful client not ready.");
-    return;
-  }
+  if (!client) return;
 
   try {
     const res = await client.getEntries({
@@ -35,45 +38,28 @@ async function loadHomeFromContentful() {
     });
 
     const entry = res?.items?.[0];
-    if (!entry?.fields) {
-      console.warn("⚠️ No homepage entry found.");
-      return;
-    }
+    if (!entry) return;
 
-    // Alias Contentful field names → internal names
-    const {
-      headliner: headline,
-      daylogo,
-      nitelogo: nightlogo,
-      typing,
-    } = entry.fields;
+    const { headliner, daylogo, nitelogo, typing } = entry.fields;
 
-    // Headline
+    // headline (FIXED name)
     const headlineEl = document.getElementById("hc-home-title");
-    if (headlineEl && typeof headline === "string") {
-      headlineEl.textContent = headline;
-    }
+    if (headlineEl) headlineEl.textContent = headliner || "";
 
-    // Theme logo
+    // logo (FIXED names)
     const logoEl = document.getElementById("hc-home-logo");
     if (logoEl) {
       const isNight = document.body.classList.contains("night-mode");
-      const selectedLogo = isNight ? nightlogo : daylogo;
+      const src = isNight ? nitelogo : daylogo;
 
-      if (typeof selectedLogo === "string") {
-        logoEl.src = selectedLogo;
-      } else {
-        console.warn("⚠️ Invalid logo value:", selectedLogo);
-      }
+      if (typeof src === "string") logoEl.src = src;
     }
 
-    // Typing text
+    // typing
     const typeEl = document.getElementById("hc-home-typewriter");
-    if (typeEl) {
-      typeEl.textContent = resolveTypingText(typing);
-    }
+    if (typeEl) typeEl.textContent = resolveTypingText(typing);
   } catch (err) {
-    console.error("❌ Contentful fetch failed:", err);
+    console.error("Contentful fetch failed:", err);
   }
 }
 
@@ -84,9 +70,8 @@ function resolveTypingText(typing) {
 
   if (typeof typing === "object") {
     if (typing.text) return typing.text;
-    if (Array.isArray(typing.lines) && typing.lines.length) return typing.lines[0];
-    if (Array.isArray(typing.messages) && typing.messages.length)
-      return typing.messages[0];
+    if (Array.isArray(typing.lines)) return typing.lines[0] || "";
+    if (Array.isArray(typing.messages)) return typing.messages[0] || "";
   }
 
   return "";

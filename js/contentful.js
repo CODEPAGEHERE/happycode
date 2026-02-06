@@ -1,42 +1,48 @@
 // /js/contentful.js
 
-async function waitForConfig(maxWaitMs = 2000) {
-  const start = Date.now();
+async function waitForConfig(timeout = 2000) {
+  if (window.HC_CONFIG) return true;
 
-  while (!window.HC_CONFIG) {
-    if (Date.now() - start > maxWaitMs) {
-      console.error("❌ HC_CONFIG missing after waiting.");
-      return false;
-    }
+  return new Promise((resolve) => {
+    const timer = setTimeout(() => {
+      console.error("HC_CONFIG not available.");
+      resolve(false);
+    }, timeout);
 
-    await new Promise(resolve => setTimeout(resolve, 50));
-  }
-
-  return true;
+    window.addEventListener(
+      "hc:config-ready",
+      () => {
+        clearTimeout(timer);
+        resolve(true);
+      },
+      { once: true }
+    );
+  });
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
   if (!window.contentful) {
-    console.error("❌ Contentful SDK not loaded.");
+    console.error("Contentful SDK missing.");
     return;
   }
 
   const ready = await waitForConfig();
-
   if (!ready) return;
 
-  const { CONTENTFUL_SPACE_ID, CONTENTFUL_DELIVERY_TOKEN } = window.HC_CONFIG;
+  const { CONTENTFUL_SPACE_ID, CONTENTFUL_DELIVERY_TOKEN } =
+    window.HC_CONFIG || {};
 
   if (!CONTENTFUL_SPACE_ID || !CONTENTFUL_DELIVERY_TOKEN) {
-    console.error("❌ Missing Contentful credentials in HC_CONFIG.");
+    console.error("Contentful credentials missing.");
     return;
   }
 
-  // Init once globally for the entire project
+  // Initialize global client
   window.hcContentful = contentful.createClient({
     space: CONTENTFUL_SPACE_ID,
     accessToken: CONTENTFUL_DELIVERY_TOKEN,
   });
 
-  console.log("✅ Contentful client ready:", window.hcContentful);
+  // Signal readiness for other modules (home.js etc.)
+  window.dispatchEvent(new Event("hc:contentful-ready"));
 });

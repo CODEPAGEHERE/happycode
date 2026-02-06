@@ -4,7 +4,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
   padding: 2.5rem 1rem;
   text-align: center;
 }
@@ -16,7 +15,7 @@
   height: 420px;
   display: grid;
   place-items: center;
-  will-change: transform; /* gsap */
+  will-change: transform;
 }
 
 /* Cloud SVG */
@@ -26,17 +25,16 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-
   filter: drop-shadow(0 22px 40px rgba(0,0,0,0.20))
           drop-shadow(0 8px 18px rgba(0,0,0,0.10));
 }
 
-/* show correct cloud per theme */
+/* Theme switching */
 #night-cloud { display: none; }
 body.night-mode #day-cloud { display: none; }
 body.night-mode #night-cloud { display: block; }
 
-/* Content INSIDE cloud */
+/* Content inside cloud */
 .cloud-content {
   position: relative;
   z-index: 2;
@@ -47,9 +45,9 @@ body.night-mode #night-cloud { display: block; }
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1.1rem;
+  gap: 1.6rem;
 
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 /* Logo */
@@ -58,9 +56,17 @@ body.night-mode #night-cloud { display: block; }
   height: 170px;
   border-radius: 50%;
   object-fit: cover;
-
   border: 6px solid rgba(255,255,255,0.85);
   box-shadow: 0 14px 35px rgba(0,0,0,0.20);
+}
+
+/* Headline (bigger) */
+.home-title {
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: var(--text-color);
+  text-shadow: 0 12px 28px rgba(0,0,0,0.18);
 }
 
 /* Animated Ghost Text */
@@ -70,10 +76,8 @@ body.night-mode #night-cloud { display: block; }
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-
   padding: 0;
   margin: 0;
-
   max-width: 92%;
   gap: 0.15rem;
 }
@@ -83,7 +87,6 @@ body.night-mode #night-cloud { display: block; }
   font-weight: 900;
   letter-spacing: 1px;
   transition: 0.9s ease;
-
   color: var(--text-color);
   text-shadow: 0 10px 25px rgba(0,0,0,0.12);
 }
@@ -92,19 +95,17 @@ body.night-mode #night-cloud { display: block; }
   width: 1.1rem;
 }
 
-/* Ghost hover effect */
 .animated-text .letter:hover {
   filter: blur(6px);
   opacity: 0;
   transform: translateY(-8px);
 }
 
-/* Typewriter */
+/* Typewriter (inside cloud tuned) */
 .typewriter-container {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia, "Times New Roman", serif;
   font-weight: bold;
-  font-size: 1.2em;
-  display: inline-block;
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
   border-right: 2px solid var(--accent-color);
   padding-right: 5px;
   white-space: nowrap;
@@ -114,7 +115,8 @@ body.night-mode #night-cloud { display: block; }
 .typewriter-text {
   display: inline-block;
   width: 0;
-  animation: typing 3.5s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
+  animation: typing 3.5s steps(40, end) forwards,
+             blink-caret 0.75s step-end infinite;
 }
 
 @keyframes typing {

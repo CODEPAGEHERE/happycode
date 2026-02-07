@@ -22,8 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       }
     })
-    .catch((err) => console.error("Home load failed:", err));
+    .catch(() => {});
 });
+
+/* -----------------------------
+   CONTENTFUL LOAD
+----------------------------- */
 
 async function loadHomeFromContentful() {
   const client = window.hcContentful;
@@ -40,60 +44,33 @@ async function loadHomeFromContentful() {
 
     const { headliner, daylogo, nitelogo, typing } = entry.fields;
 
-    buildGhostHeadline(headliner || "");
+    // headline
+    const headlineEl = document.getElementById("hc-home-title");
+    if (headlineEl) headlineEl.textContent = headliner || "";
 
+    // logo
     const logoEl = document.getElementById("hc-home-logo");
     if (logoEl) {
       const isNight = document.body.classList.contains("night-mode");
-      logoEl.src = isNight ? nitelogo : daylogo;
+      const src = isNight ? nitelogo : daylogo;
+      if (typeof src === "string") logoEl.src = src;
     }
 
-    const typeEl = document.getElementById("hc-home-typewriter");
-    if (typeEl) typeEl.textContent = resolveTypingText(typing);
-
-  } catch (err) {
-    console.error("Contentful fetch failed:", err);
-  }
+    // typing rotation
+    const lines = resolveTypingLines(typing);
+    startTypewriterRotation(lines);
+  } catch (_) {}
 }
 
-function buildGhostHeadline(text) {
-  const el = document.getElementById("hc-home-title");
-  if (!el) return;
+/* -----------------------------
+   TYPING JSON RESOLVER
+----------------------------- */
 
-  el.innerHTML = "";
+function resolveTypingLines(typing) {
+  if (!typing) return [];
 
-  [...text].forEach((char) => {
-    const span = document.createElement("span");
+  if (Array.isArray(typing)) return typing;
 
-    if (char === " ") {
-      span.className = "space";
-      span.innerHTML = "&nbsp;";
-    } else {
-      span.className = "letter";
-      span.textContent = char;
-    }
-
-    el.appendChild(span);
-  });
-}
-
-function resolveTypingText(typing) {
-  if (!typing) return "";
-  if (typeof typing === "string") return typing;
-  if (Array.isArray(typing)) return typing[0] || "";
-  if (typing.lines) return typing.lines[0] || "";
-  if (typing.messages) return typing.messages[0] || "";
-  return "";
-}
-
-function initHomeAnimation() {
-  if (!window.gsap) return;
-
-  gsap.to(".cloud-container", {
-    y: 35,
-    repeat: -1,
-    yoyo: true,
-    duration: 3.5,
-    ease: "sine.inOut",
-  });
-}
+  if (typeof typing === "object") {
+    if (Array.isArray(typing.lines)) return typing.lines;
+    if (Array.is

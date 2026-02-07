@@ -8,7 +8,7 @@
   text-align: center;
 }
 
-/* Bigger cloud container */
+/* Cloud container */
 .cloud-container {
   position: relative;
   width: min(680px, 96vw);
@@ -34,7 +34,7 @@
 body.night-mode #day-cloud { display: none; }
 body.night-mode #night-cloud { display: block; }
 
-/* Content inside cloud */
+/* Cloud content */
 .cloud-content {
   position: relative;
   z-index: 2;
@@ -45,8 +45,7 @@ body.night-mode #night-cloud { display: block; }
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1.6rem;
-
+  gap: 1.5rem;
   padding-top: 10px;
 }
 
@@ -60,48 +59,35 @@ body.night-mode #night-cloud { display: block; }
   box-shadow: 0 14px 35px rgba(0,0,0,0.20);
 }
 
-/* Headline (bigger) */
+/* Headline ghost system */
 .home-title {
-  font-size: clamp(2.2rem, 4vw, 3.6rem);
-  font-weight: 900;
-  letter-spacing: 1px;
-  color: var(--text-color);
-  text-shadow: 0 12px 28px rgba(0,0,0,0.18);
-}
-
-/* Animated Ghost Text */
-.animated-text {
-  list-style-type: none;
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
-  padding: 0;
-  margin: 0;
+  gap: 0.12rem;
   max-width: 92%;
-  gap: 0.15rem;
 }
 
-.animated-text .letter {
-  font-size: clamp(1.2rem, 2.4vw, 2.2rem);
+.home-title .letter {
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
   font-weight: 900;
   letter-spacing: 1px;
-  transition: 0.9s ease;
   color: var(--text-color);
-  text-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  text-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: 0.8s ease;
 }
 
-.animated-text .letter.space {
-  width: 1.1rem;
+.home-title .space {
+  width: 0.9rem;
 }
 
-.animated-text .letter:hover {
+.home-title .letter:hover {
   filter: blur(6px);
   opacity: 0;
   transform: translateY(-8px);
 }
 
-/* Typewriter (inside cloud tuned) */
+/* Typewriter */
 .typewriter-container {
   font-family: Georgia, "Times New Roman", serif;
   font-weight: bold;

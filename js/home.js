@@ -12,11 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       initHomeAnimation();
 
-      // wait for Contentful client
       if (window.hcContentful) {
         loadHomeFromContentful();
       } else {
-        window.addEventListener("hc:contentful-ready", loadHomeFromContentful, { once: true });
+        window.addEventListener(
+          "hc:contentful-ready",
+          loadHomeFromContentful,
+          { once: true }
+        );
       }
     })
     .catch((err) => console.error("Home load failed:", err));
@@ -37,19 +40,14 @@ async function loadHomeFromContentful() {
 
     const { headliner, daylogo, nitelogo, typing } = entry.fields;
 
-    // headline
-    const headlineEl = document.getElementById("hc-home-title");
-    if (headlineEl) headlineEl.textContent = headliner || "";
+    buildGhostHeadline(headliner || "");
 
-    // logo
     const logoEl = document.getElementById("hc-home-logo");
     if (logoEl) {
       const isNight = document.body.classList.contains("night-mode");
-      const src = isNight ? nitelogo : daylogo;
-      if (typeof src === "string") logoEl.src = src;
+      logoEl.src = isNight ? nitelogo : daylogo;
     }
 
-    // typing
     const typeEl = document.getElementById("hc-home-typewriter");
     if (typeEl) typeEl.textContent = resolveTypingText(typing);
 
@@ -58,17 +56,33 @@ async function loadHomeFromContentful() {
   }
 }
 
+function buildGhostHeadline(text) {
+  const el = document.getElementById("hc-home-title");
+  if (!el) return;
+
+  el.innerHTML = "";
+
+  [...text].forEach((char) => {
+    const span = document.createElement("span");
+
+    if (char === " ") {
+      span.className = "space";
+      span.innerHTML = "&nbsp;";
+    } else {
+      span.className = "letter";
+      span.textContent = char;
+    }
+
+    el.appendChild(span);
+  });
+}
+
 function resolveTypingText(typing) {
   if (!typing) return "";
-
   if (typeof typing === "string") return typing;
-
-  if (typeof typing === "object") {
-    if (typing.text) return typing.text;
-    if (Array.isArray(typing.lines)) return typing.lines[0] || "";
-    if (Array.isArray(typing.messages)) return typing.messages[0] || "";
-  }
-
+  if (Array.isArray(typing)) return typing[0] || "";
+  if (typing.lines) return typing.lines[0] || "";
+  if (typing.messages) return typing.messages[0] || "";
   return "";
 }
 

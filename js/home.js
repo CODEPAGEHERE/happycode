@@ -56,9 +56,9 @@ async function loadHomeFromContentful() {
       if (typeof src === "string") logoEl.src = src;
     }
 
-    // typing rotation
+    // typing animation
     const lines = resolveTypingLines(typing);
-    startTypewriterRotation(lines);
+    if (lines.length) startTypewriterRotation(lines);
   } catch (_) {}
 }
 
@@ -69,8 +69,94 @@ async function loadHomeFromContentful() {
 function resolveTypingLines(typing) {
   if (!typing) return [];
 
-  if (Array.isArray(typing)) return typing;
+  if (Array.isArray(typing)) return typing.filter(Boolean);
+
+  if (typeof typing === "string") return [typing];
 
   if (typeof typing === "object") {
-    if (Array.isArray(typing.lines)) return typing.lines;
-    if (Array.is
+    if (Array.isArray(typing.lines))
+      return typing.lines.filter(Boolean);
+
+    if (Array.isArray(typing.messages))
+      return typing.messages.filter(Boolean);
+
+    if (typing.text) return [typing.text];
+  }
+
+  return [];
+}
+
+/* -----------------------------
+   GSAP TYPEWRITER ROTATION
+----------------------------- */
+
+function startTypewriterRotation(lines) {
+  const el = document.getElementById("hc-home-typewriter");
+  if (!el || !window.gsap || !lines.length) return;
+
+  let index = 0;
+
+  function typeLine(text, onComplete) {
+    el.textContent = "";
+
+    gsap.to(
+      { i: 0 },
+      {
+        i: text.length,
+        duration: 1.6,
+        ease: "none",
+        onUpdate() {
+          el.textContent = text.slice(0, Math.floor(this.targets()[0].i));
+        },
+        onComplete,
+      }
+    );
+  }
+
+  function eraseLine(onComplete) {
+    const text = el.textContent;
+
+    gsap.to(
+      { i: text.length },
+      {
+        i: 0,
+        duration: 0.9,
+        ease: "none",
+        delay: 1.2,
+        onUpdate() {
+          el.textContent = text.slice(0, Math.floor(this.targets()[0].i));
+        },
+        onComplete,
+      }
+    );
+  }
+
+  function loop() {
+    const line = lines[index];
+
+    typeLine(line, () => {
+      eraseLine(() => {
+        index = (index + 1) % lines.length;
+        loop();
+      });
+    });
+  }
+
+  loop();
+}
+
+/* -----------------------------
+   CLOUD FLOAT ANIMATION
+----------------------------- */
+
+function initHomeAnimation() {
+  if (!window.gsap) return;
+
+  gsap.to(".cloud-container", {
+    y: 35,
+    repeat: -1,
+    yoyo: true,
+    duration: 3.5,
+    ease: "sine.inOut",
+  });
+}

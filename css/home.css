@@ -48,7 +48,7 @@ body.night-mode #night-cloud { display: block; }
   text-align: center;
 
   /* 🔥 THIS is what moves it */
-  transform: translateY(60px);
+  transform: translateY(85px);
 }
 
 
@@ -105,5 +105,31 @@ body.night-mode #night-cloud { display: block; }
 .typewriter-container {
   font-weight: bold;
   font-size: 1.05rem;
+  white-space: nowrap;
+}
+/* =========================
+   TYPEWRITER — STABLE BOX
+   ========================= */
+
+.typewriter-container {
+  position: relative;
+
+  /* fixed footprint so layout never shifts */
+  height: 1.6em;
+  min-width: 280px; /* adjust to longest sentence */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
+
+  overflow: hidden;
+}
+
+.typewriter-text {
+  position: absolute; /* remove from layout flow */
   white-space: nowrap;
 }

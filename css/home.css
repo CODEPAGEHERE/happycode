@@ -31,6 +31,7 @@ body.night-mode #night-cloud { display: block; }
    CONTENT LAYER — FLEX STACK
    ========================= */
 
+
 .cloud-content {
   position: absolute;
   inset: 0;
@@ -38,13 +39,14 @@ body.night-mode #night-cloud { display: block; }
 
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* pushes content to bottom of cloud */
   align-items: center;
+  justify-content: flex-end;  /* 🔥 anchor toward bottom */
 
-  padding-bottom: 60px; /* cloud floor offset */
-  gap: 10px;
+  gap: 12px;
+  padding-bottom: 70px;       /* 🔥 main vertical control */
   text-align: center;
 }
+
 
 /* =========================
    LOGO

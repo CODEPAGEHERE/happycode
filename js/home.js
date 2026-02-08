@@ -44,11 +44,8 @@ async function loadHomeFromContentful() {
 
     const { headliner, daylogo, nitelogo, typing } = entry.fields;
 
-    // headline
-    const headlineEl = document.getElementById("hc-home-title");
-    if (headlineEl) headlineEl.textContent = headliner || "";
+    renderGhostHeadline(headliner || "");
 
-    // logo
     const logoEl = document.getElementById("hc-home-logo");
     if (logoEl) {
       const isNight = document.body.classList.contains("night-mode");
@@ -56,10 +53,35 @@ async function loadHomeFromContentful() {
       if (typeof src === "string") logoEl.src = src;
     }
 
-    // typing animation
     const lines = resolveTypingLines(typing);
     if (lines.length) startTypewriterRotation(lines);
+
   } catch (_) {}
+}
+
+/* -----------------------------
+   GHOST HEADLINE RENDER
+----------------------------- */
+
+function renderGhostHeadline(text) {
+  const el = document.getElementById("hc-home-title");
+  if (!el) return;
+
+  el.innerHTML = "";
+
+  text.split("").forEach((char) => {
+    const span = document.createElement("span");
+
+    if (char === " ") {
+      span.className = "letter space";
+      span.textContent = "";
+    } else {
+      span.className = "letter";
+      span.textContent = char;
+    }
+
+    el.appendChild(span);
+  });
 }
 
 /* -----------------------------
@@ -74,12 +96,8 @@ function resolveTypingLines(typing) {
   if (typeof typing === "string") return [typing];
 
   if (typeof typing === "object") {
-    if (Array.isArray(typing.lines))
-      return typing.lines.filter(Boolean);
-
-    if (Array.isArray(typing.messages))
-      return typing.messages.filter(Boolean);
-
+    if (Array.isArray(typing.lines)) return typing.lines.filter(Boolean);
+    if (Array.isArray(typing.messages)) return typing.messages.filter(Boolean);
     if (typing.text) return [typing.text];
   }
 
@@ -87,54 +105,46 @@ function resolveTypingLines(typing) {
 }
 
 /* -----------------------------
-   GSAP TYPEWRITER ROTATION
+   GSAP TYPEWRITER
 ----------------------------- */
 
 function startTypewriterRotation(lines) {
   const el = document.getElementById("hc-home-typewriter");
-  if (!el || !window.gsap || !lines.length) return;
+  if (!el || !window.gsap) return;
 
   let index = 0;
 
-  function typeLine(text, onComplete) {
+  function typeLine(text, done) {
     el.textContent = "";
 
-    gsap.to(
-      { i: 0 },
-      {
-        i: text.length,
-        duration: 1.6,
-        ease: "none",
-        onUpdate() {
-          el.textContent = text.slice(0, Math.floor(this.targets()[0].i));
-        },
-        onComplete,
-      }
-    );
+    gsap.to({ i: 0 }, {
+      i: text.length,
+      duration: 1.6,
+      ease: "none",
+      onUpdate() {
+        el.textContent = text.slice(0, Math.floor(this.targets()[0].i));
+      },
+      onComplete: done
+    });
   }
 
-  function eraseLine(onComplete) {
+  function eraseLine(done) {
     const text = el.textContent;
 
-    gsap.to(
-      { i: text.length },
-      {
-        i: 0,
-        duration: 0.9,
-        ease: "none",
-        delay: 1.2,
-        onUpdate() {
-          el.textContent = text.slice(0, Math.floor(this.targets()[0].i));
-        },
-        onComplete,
-      }
-    );
+    gsap.to({ i: text.length }, {
+      i: 0,
+      duration: 0.9,
+      delay: 1.2,
+      ease: "none",
+      onUpdate() {
+        el.textContent = text.slice(0, Math.floor(this.targets()[0].i));
+      },
+      onComplete: done
+    });
   }
 
   function loop() {
-    const line = lines[index];
-
-    typeLine(line, () => {
+    typeLine(lines[index], () => {
       eraseLine(() => {
         index = (index + 1) % lines.length;
         loop();
@@ -146,7 +156,7 @@ function startTypewriterRotation(lines) {
 }
 
 /* -----------------------------
-   CLOUD FLOAT ANIMATION
+   CLOUD FLOAT
 ----------------------------- */
 
 function initHomeAnimation() {

@@ -11,6 +11,7 @@
   position: relative;
   width: min(680px, 96vw);
   height: 420px;
+  overflow: hidden; /* prevents text spilling outside */
 }
 
 /* CLOUD SVG */
@@ -36,12 +37,12 @@ body.night-mode #night-cloud { display: block; }
 }
 
 /* =========================
-   LOGO — EXACT CENTER
+   LOGO — CENTER
    ========================= */
 
 .home-logo {
   position: absolute;
-  top: 50%;
+  top: 68%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -52,46 +53,49 @@ body.night-mode #night-cloud { display: block; }
 }
 
 /* =========================
-   TYPEWRITER — BETWEEN
+   TYPEWRITER
    ========================= */
 
 .typewriter-container {
   position: absolute;
-  top: calc(50% + 90px); /* just below logo */
+  top: calc(68% + 85px);
   left: 50%;
   transform: translateX(-50%);
 
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   white-space: nowrap;
   text-align: center;
 }
 
 /* =========================
-   HEADLINE — BOTTOM CLOUD
+   HEADLINE — CONTROLLED SIZE
    ========================= */
 
 .home-title {
   position: absolute;
-  bottom: 55px; /* interior cloud floor */
+  bottom: 18px;
   left: 50%;
   transform: translateX(-50%);
 
-  width: 80%;
-  text-align: center;
+  width: 82%;
+  max-height: 110px; /* stops giant vertical growth */
+  overflow: hidden;
 
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2px;
+  gap: 3px;
 
+  text-align: center;
   font-weight: 900;
+  line-height: 1.05;
 }
 
-/* ghost effect */
+/* ghost letters */
 
 .home-title .letter {
-  font-size: clamp(2.2rem, 3.4vw, 3.2rem);
+  font-size: clamp(1.4rem, 2.2vw, 2.1rem);
   transition: 0.8s ease;
 }
 
@@ -102,5 +106,5 @@ body.night-mode #night-cloud { display: block; }
 }
 
 .home-title .space {
-  width: 0.6em;
+  width: 0.5em;
 }

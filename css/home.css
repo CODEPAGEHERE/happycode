@@ -11,7 +11,6 @@
   position: relative;
   width: min(680px, 96vw);
   height: 420px;
-  overflow: hidden; /* prevents text spilling outside */
 }
 
 /* CLOUD SVG */
@@ -28,44 +27,34 @@
 body.night-mode #day-cloud { display: none; }
 body.night-mode #night-cloud { display: block; }
 
-/* CONTENT LAYER */
+/* =========================
+   CONTENT LAYER — FLEX STACK
+   ========================= */
 
 .cloud-content {
   position: absolute;
   inset: 0;
   z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* pushes content to bottom of cloud */
+  align-items: center;
+
+  padding-bottom: 60px; /* cloud floor offset */
+  gap: 10px;
+  text-align: center;
 }
 
 /* =========================
-   LOGO — CENTER
+   LOGO
    ========================= */
 
 .home-logo {
-  position: absolute;
-  top: 68%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   object-fit: cover;
-}
-
-/* =========================
-   TYPEWRITER
-   ========================= */
-
-.typewriter-container {
-  position: absolute;
-  top: calc(68% + 85px);
-  left: 50%;
-  transform: translateX(-50%);
-
-  font-weight: bold;
-  font-size: 1.05rem;
-  white-space: nowrap;
-  text-align: center;
 }
 
 /* =========================
@@ -73,29 +62,22 @@ body.night-mode #night-cloud { display: block; }
    ========================= */
 
 .home-title {
-  position: absolute;
-  bottom: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-
   width: 82%;
-  max-height: 110px; /* stops giant vertical growth */
-  overflow: hidden;
+  max-width: 520px;
 
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 3px;
 
-  text-align: center;
   font-weight: 900;
   line-height: 1.05;
 }
 
-/* ghost letters */
+/* ghost effect */
 
 .home-title .letter {
-  font-size: clamp(1.4rem, 2.2vw, 2.1rem);
+  font-size: clamp(1.5rem, 2.3vw, 2.2rem);
   transition: 0.8s ease;
 }
 
@@ -107,4 +89,14 @@ body.night-mode #night-cloud { display: block; }
 
 .home-title .space {
   width: 0.5em;
+}
+
+/* =========================
+   TYPEWRITER — BOTTOM
+   ========================= */
+
+.typewriter-container {
+  font-weight: bold;
+  font-size: 1.05rem;
+  white-space: nowrap;
 }

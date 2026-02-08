@@ -5,11 +5,15 @@
   align-items: center;
 }
 
+/* CLOUD CONTAINER */
+
 .cloud-container {
   position: relative;
   width: min(680px, 96vw);
   height: 420px;
 }
+
+/* CLOUD SVG */
 
 .big-floating-cloud {
   position: absolute;
@@ -23,43 +27,68 @@
 body.night-mode #day-cloud { display: none; }
 body.night-mode #night-cloud { display: block; }
 
-/* 🔥 FIX: bottom anchor inside cloud */
+/* CONTENT LAYER */
 
 .cloud-content {
   position: absolute;
-  bottom: 65px;        /* ← adjust if needed */
-  left: 50%;
-  transform: translateX(-50%);
-
-  width: 85%;
-  max-width: 520px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  text-align: center;
+  inset: 0;
   z-index: 2;
 }
 
-/* logo centered visually */
+/* =========================
+   LOGO — EXACT CENTER
+   ========================= */
 
 .home-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-/* 🔥 ghost headline */
+/* =========================
+   TYPEWRITER — BETWEEN
+   ========================= */
+
+.typewriter-container {
+  position: absolute;
+  top: calc(50% + 90px); /* just below logo */
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-weight: bold;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* =========================
+   HEADLINE — BOTTOM CLOUD
+   ========================= */
 
 .home-title {
+  position: absolute;
+  bottom: 55px; /* interior cloud floor */
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 80%;
+  text-align: center;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2px;
+
   font-weight: 900;
 }
+
+/* ghost effect */
 
 .home-title .letter {
   font-size: clamp(2.2rem, 3.4vw, 3.2rem);
@@ -74,11 +103,4 @@ body.night-mode #night-cloud { display: block; }
 
 .home-title .space {
   width: 0.6em;
-}
-
-/* typewriter */
-
-.typewriter-container {
-  font-weight: bold;
-  font-size: 1.2rem;
 }

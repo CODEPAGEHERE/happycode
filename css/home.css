@@ -43,7 +43,7 @@ body.night-mode #night-cloud { display: block; }
   justify-content: flex-end;  /* 🔥 anchor toward bottom */
 
   gap: 12px;
-  padding-bottom: 70px;       /* 🔥 main vertical control */
+  padding-bottom: 100px;       /* 🔥 main vertical control */
   text-align: center;
 }
 

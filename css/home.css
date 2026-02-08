@@ -32,6 +32,8 @@ body.night-mode #night-cloud { display: block; }
    ========================= */
 
 
+/* CONTENT LAYER — FORCE LOWER INTO CLOUD */
+
 .cloud-content {
   position: absolute;
   inset: 0;
@@ -40,12 +42,15 @@ body.night-mode #night-cloud { display: block; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;  /* 🔥 anchor toward bottom */
+  justify-content: center;
 
   gap: 12px;
-  padding-bottom: 100px;       /* 🔥 main vertical control */
   text-align: center;
+
+  /* 🔥 THIS is what moves it */
+  transform: translateY(60px);
 }
+
 
 
 /* =========================

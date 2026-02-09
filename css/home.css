@@ -1,5 +1,5 @@
 .hc-home {
-  min-height: calc(60vh - 120px);
+  height:60px;
   display: flex;
   justify-content: center;
   align-items: center;

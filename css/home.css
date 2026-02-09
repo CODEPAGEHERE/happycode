@@ -3,41 +3,37 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  overflow: hidden; /* prevents float overshoot scroll */
 }
 
-
-/* CLOUD CONTAINER */
-
+/* CENTERED LAYOUT BOX — NEVER ANIMATED */
 .cloud-container {
   position: relative;
   width: min(680px, 96vw);
   height: 420px;
 }
 
-/* CLOUD SVG */
+/* FLOAT LAYER — ANIMATED */
+.cloud-float {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 
+/* CLOUD SVG */
 .big-floating-cloud {
   position: absolute;
   inset: 0;
   width: 100%;
   z-index: 1;
   filter: drop-shadow(0 22px 40px rgba(0,0,0,0.2));
-
 }
 
 #night-cloud { display: none; }
 body.night-mode #day-cloud { display: none; }
 body.night-mode #night-cloud { display: block; }
 
-
-/* =========================
-   CONTENT LAYER — FLEX STACK
-   ========================= */
-
-
-/* CONTENT LAYER — FORCE LOWER INTO CLOUD */
-
+/* CONTENT */
 .cloud-content {
   position: absolute;
   inset: 0;
@@ -50,15 +46,11 @@ body.night-mode #night-cloud { display: block; }
 
   gap: 12px;
   text-align: center;
+
   transform: translateY(150px);
 }
 
-
-
-/* =========================
-   LOGO
-   ========================= */
-
+/* LOGO */
 .home-logo {
   width: 140px;
   height: 140px;
@@ -66,10 +58,7 @@ body.night-mode #night-cloud { display: block; }
   object-fit: cover;
 }
 
-/* =========================
-   HEADLINE — CONTROLLED SIZE
-   ========================= */
-
+/* TITLE */
 .home-title {
   width: 82%;
   max-width: 520px;
@@ -82,8 +71,6 @@ body.night-mode #night-cloud { display: block; }
   font-weight: 900;
   line-height: 1.05;
 }
-
-/* ghost effect */
 
 .home-title .letter {
   font-size: clamp(1.5rem, 2.3vw, 2.2rem);
@@ -100,25 +87,11 @@ body.night-mode #night-cloud { display: block; }
   width: 0.5em;
 }
 
-/* =========================
-   TYPEWRITER — BOTTOM
-   ========================= */
-
-.typewriter-container {
-  font-weight: bold;
-  font-size: 1.05rem;
-  white-space: nowrap;
-}
-/* =========================
-   TYPEWRITER — STABLE BOX
-   ========================= */
-
+/* TYPEWRITER */
 .typewriter-container {
   position: relative;
-
-  /* fixed footprint so layout never shifts */
   height: 1.6em;
-  min-width: 500px; /* adjust to longest sentence */
+  min-width: 500px;
 
   display: flex;
   align-items: center;
@@ -132,6 +105,6 @@ body.night-mode #night-cloud { display: block; }
 }
 
 .typewriter-text {
-  position: absolute; /* remove from layout flow */
+  position: absolute;
   white-space: nowrap;
 }

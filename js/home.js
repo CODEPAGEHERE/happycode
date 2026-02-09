@@ -119,7 +119,7 @@ function startTypewriterRotation(lines) {
 
     gsap.to({ i: 0 }, {
       i: text.length,
-      duration: 1.6,
+      duration: 4.6,
       ease: "none",
       onUpdate() {
         el.textContent = text.slice(0, Math.floor(this.targets()[0].i));
@@ -162,7 +162,7 @@ function startTypewriterRotation(lines) {
 function initHomeAnimation() {
   if (!window.gsap) return;
 
-  gsap.to(".cloud-container", {
+  gsap.to(".cloud-float", {
     y: 35,
     repeat: -1,
     yoyo: true,

@@ -1,9 +1,8 @@
 .hc-home {
-  height: calc(100vh - 120px);
+  min-height: calc(700vh - 120px);
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* prevents scroll */
 }
 
 /* CLOUD CONTAINER */
@@ -12,11 +11,7 @@
   position: relative;
   width: min(680px, 96vw);
   height: 420px;
-
-  /* 🔥 visual centering correction */
-  margin-top: -50px;  /* adjust -40px to -70px as needed */
 }
-
 
 /* CLOUD SVG */
 

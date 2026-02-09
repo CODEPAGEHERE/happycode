@@ -163,7 +163,7 @@ function initHomeAnimation() {
   if (!window.gsap) return;
 
   gsap.to(".cloud-container", {
-    y: 35,
+    y: -18,
     repeat: -1,
     yoyo: true,
     duration: 3.5,

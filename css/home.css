@@ -48,8 +48,6 @@ body.night-mode #night-cloud { display: block; }
 
   gap: 12px;
   text-align: center;
-
-  /* 🔥 THIS is what moves it */
   transform: translateY(-40px);
 }
 

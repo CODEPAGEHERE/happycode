@@ -48,7 +48,7 @@ body.night-mode #night-cloud { display: block; }
   text-align: center;
 
   /* 🔥 THIS is what moves it */
-  transform: translateY(85px);
+  transform: translateY(100px);
 }
 
 
@@ -116,7 +116,7 @@ body.night-mode #night-cloud { display: block; }
 
   /* fixed footprint so layout never shifts */
   height: 1.6em;
-  min-width: 280px; /* adjust to longest sentence */
+  min-width: 400px; /* adjust to longest sentence */
 
   display: flex;
   align-items: center;

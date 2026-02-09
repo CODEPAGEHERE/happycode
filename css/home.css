@@ -23,8 +23,6 @@
   width: 100%;
   z-index: 1;
   filter: drop-shadow(0 22px 40px rgba(0,0,0,0.2));
-  margin-top:-150px;
-  margin-bottom:-20px;
 
 }
 
@@ -52,7 +50,7 @@ body.night-mode #night-cloud { display: block; }
 
   gap: 12px;
   text-align: center;
-  transform: translateY(-40px);
+  transform: translateY(150px);
 }
 
 

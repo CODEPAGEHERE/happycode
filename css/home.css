@@ -47,7 +47,7 @@ body.night-mode #night-cloud { display: block; }
   gap: 12px;
   text-align: center;
 
-  transform: translateY(150px);
+  transform: translateY(50px);
 }
 
 /* LOGO */

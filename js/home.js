@@ -119,7 +119,7 @@ function startTypewriterRotation(lines) {
 
     gsap.to({ i: 0 }, {
       i: text.length,
-      duration: 4.6,
+      duration: 7.6,
       ease: "none",
       onUpdate() {
         el.textContent = text.slice(0, Math.floor(this.targets()[0].i));
@@ -133,7 +133,7 @@ function startTypewriterRotation(lines) {
 
     gsap.to({ i: text.length }, {
       i: 0,
-      duration: 0.9,
+      duration: 2.9,
       delay: 1.2,
       ease: "none",
       onUpdate() {

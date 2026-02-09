@@ -1,9 +1,11 @@
 .hc-home {
-  height: calc(100vh - 70px);
+  height: calc(100vh - 120px);
   display: flex;
   justify-content: center;
-  align-items: center
+  align-items: center;
+  position: relative;
 }
+
 
 /* CLOUD CONTAINER */
 
@@ -48,7 +50,7 @@ body.night-mode #night-cloud { display: block; }
   text-align: center;
 
   /* 🔥 THIS is what moves it */
-  transform: translateY(150px);
+  transform: translateY(-40px);
 }
 
 

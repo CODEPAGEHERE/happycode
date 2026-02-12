@@ -1,3 +1,5 @@
+let hcHomeEntry = null; // store entry globally for updates
+
 document.addEventListener("DOMContentLoaded", () => {
   const mount = document.getElementById("hc-page");
   if (!mount) return;
@@ -28,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
 /* -----------------------------
    CONTENTFUL LOAD
 ----------------------------- */
-
 async function loadHomeFromContentful() {
   const client = window.hcContentful;
   if (!client) return;
@@ -42,27 +43,40 @@ async function loadHomeFromContentful() {
     const entry = res?.items?.[0];
     if (!entry) return;
 
-    const { headliner, daylogo, nitelogo, typing } = entry.fields;
+    hcHomeEntry = entry; // store globally
 
-    renderGhostHeadline(headliner || "");
-
-    const logoEl = document.getElementById("hc-home-logo");
-    if (logoEl) {
-      const isNight = document.body.classList.contains("night-mode");
-      const src = isNight ? nitelogo : daylogo;
-      if (typeof src === "string") logoEl.src = src;
-    }
-
-    const lines = resolveTypingLines(typing);
-    if (lines.length) startTypewriterRotation(lines);
-
+    renderHomeContent(entry);
   } catch (_) {}
 }
 
 /* -----------------------------
-   GHOST HEADLINE RENDER
+   RENDER HOME CONTENT
 ----------------------------- */
+function renderHomeContent(entry) {
+  const { headliner, daylogo, nitelogo, typing } = entry.fields;
 
+  renderGhostHeadline(headliner || "");
+  updateHomeLogo(daylogo, nitelogo);
+
+  const lines = resolveTypingLines(typing);
+  if (lines.length) startTypewriterRotation(lines);
+}
+
+/* -----------------------------
+   UPDATE LOGO BASED ON THEME
+----------------------------- */
+function updateHomeLogo(daylogo, nitelogo) {
+  const logoEl = document.getElementById("hc-home-logo");
+  if (!logoEl) return;
+
+  const isNight = document.body.classList.contains("night-mode");
+  const src = isNight ? nitelogo : daylogo;
+  if (typeof src === "string" && logoEl.src !== src) logoEl.src = src;
+}
+
+/* -----------------------------
+   HELPER: RENDER HEADLINE
+----------------------------- */
 function renderGhostHeadline(text) {
   const el = document.getElementById("hc-home-title");
   if (!el) return;
@@ -71,7 +85,6 @@ function renderGhostHeadline(text) {
 
   text.split("").forEach((char) => {
     const span = document.createElement("span");
-
     if (char === " ") {
       span.className = "letter space";
       span.textContent = "";
@@ -79,22 +92,18 @@ function renderGhostHeadline(text) {
       span.className = "letter";
       span.textContent = char;
     }
-
     el.appendChild(span);
   });
 }
 
 /* -----------------------------
-   TYPING JSON RESOLVER
+   HELPER: TYPEWRITER
 ----------------------------- */
-
 function resolveTypingLines(typing) {
   if (!typing) return [];
 
   if (Array.isArray(typing)) return typing.filter(Boolean);
-
   if (typeof typing === "string") return [typing];
-
   if (typeof typing === "object") {
     if (Array.isArray(typing.lines)) return typing.lines.filter(Boolean);
     if (Array.isArray(typing.messages)) return typing.messages.filter(Boolean);
@@ -104,10 +113,6 @@ function resolveTypingLines(typing) {
   return [];
 }
 
-/* -----------------------------
-   GSAP TYPEWRITER
------------------------------ */
-
 function startTypewriterRotation(lines) {
   const el = document.getElementById("hc-home-typewriter");
   if (!el || !window.gsap) return;
@@ -116,7 +121,6 @@ function startTypewriterRotation(lines) {
 
   function typeLine(text, done) {
     el.textContent = "";
-
     gsap.to({ i: 0 }, {
       i: text.length,
       duration: 7.6,
@@ -130,7 +134,6 @@ function startTypewriterRotation(lines) {
 
   function eraseLine(done) {
     const text = el.textContent;
-
     gsap.to({ i: text.length }, {
       i: 0,
       duration: 2.9,
@@ -158,11 +161,10 @@ function startTypewriterRotation(lines) {
 /* -----------------------------
    CLOUD FLOAT
 ----------------------------- */
-
 function initHomeAnimation() {
   if (!window.gsap) return;
 
-  gsap.to(".cloud-float", {
+  gsap.to(".cloud-container", {
     y: 35,
     repeat: -1,
     yoyo: true,
@@ -170,3 +172,12 @@ function initHomeAnimation() {
     ease: "sine.inOut",
   });
 }
+
+/* -----------------------------
+   LISTEN FOR THEME CHANGE
+----------------------------- */
+document.addEventListener("hc:theme-change", () => {
+  if (!hcHomeEntry) return;
+  const { daylogo, nitelogo } = hcHomeEntry.fields;
+  updateHomeLogo(daylogo, nitelogo);
+});

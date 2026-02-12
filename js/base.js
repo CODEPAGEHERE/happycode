@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const toggle = document.getElementById("hc-theme-toggle");
     if (toggle) toggle.checked = theme === "night";
+
+    // 🔥 ADD THIS LINE (do not remove anything else)
+    document.dispatchEvent(new CustomEvent("hc:theme-change"));
   }
 
   const savedTheme = localStorage.getItem("hc-theme") || getAutoTheme();

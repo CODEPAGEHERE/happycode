@@ -131,38 +131,52 @@ body.night-mode .nav-pills .nav-link.active {
   opacity: 1;
 }
 
+/* mobile */
 @media screen and (max-width: 768px) {
-  /* Keep navbar scrollable */
+
+  /* Make navbar scrollable */
   #navbar {
     display: flex;
-    overflow-x: auto; /* horizontal scroll */
-    -webkit-overflow-scrolling: touch;
-    flex-wrap: nowrap;
+    overflow-x: auto;                 /* horizontal scroll */
+    -webkit-overflow-scrolling: touch; /* smooth scroll iOS */
+    flex-wrap: nowrap;                 /* keep items in one row */
     padding-bottom: 5px;
     margin-left: 0;
+    position: relative;                /* needed for absolute dropdown */
   }
 
+  /* Pills adjustments for mobile */
   .nav-pills .nav-link {
-    margin-left: 10px;
-    padding: 8px 15px;
-    white-space: nowrap; /* prevent text wrap */
+    margin-left: 10px;                 /* smaller spacing */
+    padding: 8px 15px;                 /* smaller padding */
+    white-space: nowrap;                /* prevent text wrap */
+    flex-shrink: 0;                     /* keep scroll working */
   }
 
+  /* Hide scrollbar but still scrollable */
   #navbar::-webkit-scrollbar {
-    display: none; /* hide scrollbar */
+    display: none;
   }
 
-  /* Dropdown parent relative */
+  /* Dropdown parent stays relative */
   .nav-item.dropdown {
-    position: relative; /* keep dropdown positioned correctly */
+    position: relative;                 /* parent relative for absolute dropdown */
   }
 
-  /* Dropdown appears outside scrollable nav */
+  /* Dropdown menu appears outside the header/nav */
   .dropdown-menu {
-    position: absolute; /* outside the nav container */
-    top: 100%;
+    position: absolute !important;      /* outside scrollable navbar */
+    top: 100%;                          /* below the nav item */
     left: 0;
-    z-index: 1050;
-    white-space: nowrap;
+    z-index: 2000 !important;           /* on top of all elements */
+    white-space: nowrap;                 /* no wrapping in dropdown */
+  }
+
+  /* Header container allows overflow for dropdown */
+  .hc-header .container-fluid {
+    overflow: visible;                  /* dropdown can escape header */
+    flex-wrap: nowrap;                   /* keep items in one row */
+    padding: 0 10px;
+    position: relative;                  /* needed for absolute positioning */
   }
 }

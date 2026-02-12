@@ -131,3 +131,41 @@ body.night-mode .nav-pills .nav-link.active {
   opacity: 1;
 }
 
+/* Mobile */
+
+/* Make navbar scrollable on small devices */
+@media screen and (max-width: 768px) {
+  #navbar {
+    display: flex;
+    overflow-x: auto; /* horizontal scroll */
+    -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+    flex-wrap: nowrap; /* prevent wrapping */
+    padding-bottom: 5px; /* optional spacing */
+    margin-left: 0;
+  }
+
+  /* Remove extra margin between pills for mobile */
+  .nav-pills .nav-link {
+    margin-left: 10px; /* smaller than desktop */
+    padding: 8px 15px; /* smaller padding for mobile */
+    white-space: nowrap; /* prevent text from wrapping */
+  }
+
+  /* Hide scrollbar but still scrollable */
+  #navbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hc-header .container-fluid {
+    flex-wrap: nowrap; /* keep items in one row */
+    overflow-x: auto;  /* allow horizontal scroll if needed */
+    padding: 0 10px;
+  }
+
+  .hc-theme-toggle {
+    flex-shrink: 0; /* don’t shrink the toggle */
+    margin-left: 10px;
+  }
+}

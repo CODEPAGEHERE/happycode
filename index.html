@@ -6,33 +6,6 @@
   
 
   <title>Happycode Technologies Official Website</title>
-  
-  
-
-  <script>
-    !function(){
-      const savedTheme = localStorage.getItem("hc-theme"),
-            hour = new Date().getHours(),
-            autoTheme = hour >= 6 && hour < 18 ? "day" : "night",
-            theme = savedTheme || autoTheme;
-
-      // Add night-mode class if needed
-      if(theme === "night") document.documentElement.classList.add("night-mode");
-
-      // Adjust loader logos immediately
-      const dayLogo = document.querySelector(".hc-loader-logo-img.hc-logo-day"),
-            nightLogo = document.querySelector(".hc-loader-logo-img.hc-logo-night");
-      if(dayLogo && nightLogo){
-        if(theme === "night"){
-          dayLogo.style.display = "none";
-          nightLogo.style.display = "block";
-        } else {
-          dayLogo.style.display = "block";
-          nightLogo.style.display = "none";
-        }
-      }
-    }();
-  </script>
 
 
   <!-- Bootstrap 5 CSS -->

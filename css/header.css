@@ -169,3 +169,24 @@ body.night-mode .nav-pills .nav-link.active {
     margin-left: 10px;
   }
 }
+
+/* Mobile header dropdown fix */
+@media screen and (max-width: 768px) {
+  /* Allow dropdowns to escape the scrollable nav */
+  .nav-item.dropdown {
+    position: static; /* let dropdown not be trapped by parent flex/overflow */
+  }
+
+  .dropdown-menu {
+    position: absolute !important; /* standard for dropdown */
+    top: 100%; /* appear below the parent nav item */
+    left: 0;
+    z-index: 1050 !important; /* above all other elements */
+    white-space: nowrap; /* prevent wrapping inside dropdown */
+  }
+
+  /* Allow header container to show overflow (for dropdown) */
+  .hc-header .container-fluid {
+    overflow: visible; /* dropdown can extend outside header */
+  }
+}

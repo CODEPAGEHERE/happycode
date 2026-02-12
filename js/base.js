@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const root = document.documentElement; // Use <html> for consistency
+  const body = document.body;
 
   /* -------------------------
      THEME SYSTEM
@@ -10,19 +10,20 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   function applyTheme(theme) {
-    root.classList.toggle("night-mode", theme === "night"); // consistent with HTML
+    body.classList.toggle("night-mode", theme === "night");
     localStorage.setItem("hc-theme", theme);
 
     const toggle = document.getElementById("hc-theme-toggle");
     if (toggle) toggle.checked = theme === "night";
 
+    // 🔥 ADD THIS LINE (do not remove anything else)
     document.dispatchEvent(new CustomEvent("hc:theme-change"));
   }
 
   const savedTheme = localStorage.getItem("hc-theme") || getAutoTheme();
   applyTheme(savedTheme);
 
-  // Listen for toggle events
+  // Listen for toggle even if injected later
   document.addEventListener("change", (e) => {
     if (e.target && e.target.id === "hc-theme-toggle") {
       applyTheme(e.target.checked ? "night" : "day");

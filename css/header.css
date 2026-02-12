@@ -1,57 +1,168 @@
-/* =========================
-   MOBILE HEADER & NAV FIX
-========================= */
-@media screen and (max-width: 768px) {
+/* Pills */
+.nav-pills .nav-link {
+  font-weight: bold;
+  color: var(--accent-color);
+  padding: 8px 20px;
+  border-radius: 25px;
+  transition: 0.3s;
+  margin-left:20px;
+}
 
-  /* Make navbar scrollable */
+.nav-pills .nav-link.active {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+/* Dark mode */
+body.night-mode .nav-pills .nav-link {
+  color: var(--text-color);
+}
+
+body.night-mode .nav-pills .nav-link.active {
+  background-color: var(--text-color);
+  color: black;
+}
+
+/* =========================
+   THEME TOGGLE SWITCH (HEADER)
+========================= */
+
+.hc-theme-toggle {
+  display: flex;
+  align-items: center;
+}
+
+/* Theme Switch */
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 4em;
+  height: 1.8em;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #2a2a2a;
+  transition: 0.4s;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+/* knob */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.2em;
+  width: 1.2em;
+  border-radius: 20px;
+  left: 0.5em;
+  bottom: 0.3em;
+  transition: 0.4s;
+  transition-timing-function: cubic-bezier(0.81, -0.04, 0.38, 1.5);
+  box-shadow: inset 8px -4px 0px 0px #fff;
+}
+
+/* checked state */
+.switch input:checked + .slider {
+  background-color: #00a6ff;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(1.8em);
+  box-shadow: inset 15px -4px 0px 15px #ffcf48;
+}
+
+/* stars */
+.star {
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  transition: all 0.4s;
+}
+
+.star_1 {
+  left: 2.5em;
+  top: 0.5em;
+}
+
+.star_2 {
+  left: 2.2em;
+  top: 1.2em;
+}
+
+.star_3 {
+  left: 3em;
+  top: 0.9em;
+}
+
+/* hide stars in day mode */
+.switch input:checked ~ .slider .star {
+  opacity: 0;
+}
+
+/* cloud */
+.cloud {
+  width: 3.5em;
+  position: absolute;
+  bottom: -1.1em;
+  left: -1.1em;
+  opacity: 0;
+  transition: all 0.4s;
+  pointer-events: none;
+}
+
+/* show cloud in day mode */
+.switch input:checked ~ .slider .cloud {
+  opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  /* Keep navbar scrollable */
   #navbar {
     display: flex;
     overflow-x: auto; /* horizontal scroll */
-    -webkit-overflow-scrolling: touch; /* smooth scroll iOS */
+    -webkit-overflow-scrolling: touch;
     flex-wrap: nowrap;
     padding-bottom: 5px;
     margin-left: 0;
   }
 
-  /* Navbar pills adjustments */
   .nav-pills .nav-link {
-    margin-left: 10px; /* reduce margin for mobile */
+    margin-left: 10px;
     padding: 8px 15px;
     white-space: nowrap; /* prevent text wrap */
-    flex-shrink: 0; /* prevent flex items from shrinking */
   }
 
-  /* Hide scrollbar but keep scrollable */
   #navbar::-webkit-scrollbar {
-    display: none;
+    display: none; /* hide scrollbar */
   }
 
-  /* Header container */
-  .hc-header .container-fluid {
-    flex-wrap: nowrap; /* keep items in a single row */
-    overflow: visible; /* allow dropdown to escape */
-    padding: 0 10px;
-    position: relative; /* required for dropdown absolute positioning */
-  }
-
-  /* Theme toggle */
-  .hc-theme-toggle {
-    flex-shrink: 0;
-    margin-left: 10px;
-  }
-
-  /* Dropdown parent must stay relative for absolute dropdown */
+  /* Dropdown parent relative */
   .nav-item.dropdown {
-    position: relative;
+    position: relative; /* keep dropdown positioned correctly */
   }
 
-  /* Dropdown menu */
+  /* Dropdown appears outside scrollable nav */
   .dropdown-menu {
-    position: absolute !important; /* appear outside nav */
-    top: 100%; /* below parent */
+    position: absolute; /* outside the nav container */
+    top: 100%;
     left: 0;
-    z-index: 1050 !important; /* above other elements */
-    min-width: 150px; /* optional, adjust to content */
+    z-index: 1050;
     white-space: nowrap;
   }
 }

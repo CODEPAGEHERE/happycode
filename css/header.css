@@ -131,62 +131,56 @@ body.night-mode .nav-pills .nav-link.active {
   opacity: 1;
 }
 
-/* Mobile */
-
-/* Make navbar scrollable on small devices */
+/* =========================
+   MOBILE FIXES
+========================= */
 @media screen and (max-width: 768px) {
+
+  /* Scrollable navbar */
   #navbar {
     display: flex;
     overflow-x: auto; /* horizontal scroll */
-    -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
-    flex-wrap: nowrap; /* prevent wrapping */
-    padding-bottom: 5px; /* optional spacing */
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap; /* stay in one line */
+    padding-bottom: 5px;
     margin-left: 0;
   }
 
-  /* Remove extra margin between pills for mobile */
+  /* Pills adjustments for mobile */
   .nav-pills .nav-link {
-    margin-left: 10px; /* smaller than desktop */
-    padding: 8px 15px; /* smaller padding for mobile */
-    white-space: nowrap; /* prevent text from wrapping */
+    margin-left: 10px;
+    padding: 8px 15px;
+    white-space: nowrap;
   }
 
   /* Hide scrollbar but still scrollable */
   #navbar::-webkit-scrollbar {
     display: none;
   }
-}
 
-@media screen and (max-width: 768px) {
+  /* Header container */
   .hc-header .container-fluid {
-    flex-wrap: nowrap; /* keep items in one row */
-    overflow-x: auto;  /* allow horizontal scroll if needed */
+    flex-wrap: nowrap; 
+    overflow: visible; /* allow dropdowns to escape header */
     padding: 0 10px;
   }
 
+  /* Theme toggle */
   .hc-theme-toggle {
-    flex-shrink: 0; /* don’t shrink the toggle */
+    flex-shrink: 0;
     margin-left: 10px;
   }
-}
 
-/* Mobile header dropdown fix */
-@media screen and (max-width: 768px) {
-  /* Allow dropdowns to escape the scrollable nav */
+  /* Dropdown fix without breaking scroll */
   .nav-item.dropdown {
-    position: static; /* let dropdown not be trapped by parent flex/overflow */
+    position: relative; /* must stay relative for absolute dropdown */
   }
 
   .dropdown-menu {
-    position: absolute !important; /* standard for dropdown */
-    top: 100%; /* appear below the parent nav item */
+    position: absolute !important; /* appear outside nav */
+    top: 100%; 
     left: 0;
-    z-index: 1050 !important; /* above all other elements */
-    white-space: nowrap; /* prevent wrapping inside dropdown */
-  }
-
-  /* Allow header container to show overflow (for dropdown) */
-  .hc-header .container-fluid {
-    overflow: visible; /* dropdown can extend outside header */
+    z-index: 1050 !important; 
+    white-space: nowrap;
   }
 }
